@@ -1,0 +1,927 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		071D4717686C06D331699D05 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97334D35FCBCF6F0E5C14626 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A723D93519F45452005B2A16 /* TFAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A723D93419F45452005B2A16 /* TFAlertView.m */; };
+		A729366918596CA80028ECDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A729366818596CA80028ECDB /* Foundation.framework */; };
+		A729366B18596CA80028ECDB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A729366A18596CA80028ECDB /* CoreGraphics.framework */; };
+		A729366D18596CA80028ECDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A729366C18596CA80028ECDB /* UIKit.framework */; };
+		A729367318596CA80028ECDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A729367118596CA80028ECDB /* InfoPlist.strings */; };
+		A729367518596CA80028ECDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A729367418596CA80028ECDB /* main.m */; };
+		A729367918596CA80028ECDB /* TFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A729367818596CA80028ECDB /* TFAppDelegate.m */; };
+		A729367F18596CA80028ECDB /* TFMainDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A729367E18596CA80028ECDB /* TFMainDisplayViewController.m */; };
+		A729368118596CA80028ECDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A729368018596CA80028ECDB /* Images.xcassets */; };
+		A729368818596CA90028ECDB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A729368718596CA90028ECDB /* XCTest.framework */; };
+		A729368918596CA90028ECDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A729366818596CA80028ECDB /* Foundation.framework */; };
+		A729368A18596CA90028ECDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A729366C18596CA80028ECDB /* UIKit.framework */; };
+		A729369218596CA90028ECDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A729369018596CA90028ECDB /* InfoPlist.strings */; };
+		A729369418596CA90028ECDB /* StealthAssistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A729369318596CA90028ECDB /* StealthAssistTests.m */; };
+		A72B291E196861C50061D5B3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72B291D196861C50061D5B3 /* AudioToolbox.framework */; };
+		A736CCDD1873A48800F9746C /* TFAlertOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CCDC1873A48800F9746C /* TFAlertOverlay.m */; };
+		A736CCE01873C85B00F9746C /* TFMainDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CCDF1873C85B00F9746C /* TFMainDisplay.m */; };
+		A736CCE31874BEA100F9746C /* TFHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CCE21874BEA100F9746C /* TFHelpViewController.m */; };
+		A736CCE71874C39300F9746C /* WSCoachMarksView.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CCE51874C39300F9746C /* WSCoachMarksView.m */; };
+		A736CCED1877A2E000F9746C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A736CCEC1877A2E000F9746C /* SystemConfiguration.framework */; };
+		A736CCF91879FA5700F9746C /* TFDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CCF81879FA5700F9746C /* TFDeviceHardware.m */; };
+		A736CD04187A1EA600F9746C /* TFFAQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CD03187A1EA600F9746C /* TFFAQViewController.m */; };
+		A736CD08187A1F2900F9746C /* TFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CD07187A1F2900F9746C /* TFTableViewController.m */; };
+		A736CD0C187A213D00F9746C /* TFFAQEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CD0B187A213D00F9746C /* TFFAQEntry.m */; };
+		A736CD10187A259200F9746C /* TFFAQCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CD0F187A259200F9746C /* TFFAQCell.m */; };
+		A7382A2E1B54904C005B5D31 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = A7382A281B54904C005B5D31 /* dsym_upload.sh */; };
+		A7382A2F1B54904C005B5D31 /* libCrittercism_v5_2_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7382A291B54904C005B5D31 /* libCrittercism_v5_2_0.a */; };
+		A7382A301B54904C005B5D31 /* libFlurry_6.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7382A2D1B54904C005B5D31 /* libFlurry_6.5.0.a */; };
+		A7382A481B54909F005B5D31 /* libESPLibrary_2_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7382A471B54909F005B5D31 /* libESPLibrary_2_0.a */; };
+		A74D993418B03AC000E129DA /* TFAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = A74D993318B03AC000E129DA /* TFAnalytics.m */; };
+		A74D993618B140FC00E129DA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A74D993518B140FC00E129DA /* StoreKit.framework */; };
+		A74D993918B146E500E129DA /* TFAppUnlockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A74D993818B146E500E129DA /* TFAppUnlockManager.m */; };
+		A74D993B18B1539900E129DA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A74D993A18B1539800E129DA /* Security.framework */; };
+		A788784C19845A7A00A3E525 /* TFSignalStrengthView.m in Sources */ = {isa = PBXBuildFile; fileRef = A788784B19845A7A00A3E525 /* TFSignalStrengthView.m */; };
+		A7A4D27B186E9D84009DC961 /* TFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A4D27A186E9D84009DC961 /* TFSettingsViewController.m */; };
+		A7A4D280186EC885009DC961 /* TFControlDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A4D27F186EC885009DC961 /* TFControlDrawer.m */; };
+		A7A4F2D118831AA40080CD8E /* UIColor+LighterAndDarker.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A4F2D018831AA40080CD8E /* UIColor+LighterAndDarker.m */; };
+		A7A5E84C18E8C34300BE1EA5 /* TFSettingsColorController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5E84B18E8C34300BE1EA5 /* TFSettingsColorController.m */; };
+		A7BF7943186BBDB0009D0D4E /* TFPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BF7942186BBDB0009D0D4E /* TFPreferences.m */; };
+		A7D8030519663F7F00B4F903 /* bogeylock-k.aif in Resources */ = {isa = PBXBuildFile; fileRef = A7D8030219663F7F00B4F903 /* bogeylock-k.aif */; };
+		A7D8030619663F7F00B4F903 /* bogeylock-ka.aif in Resources */ = {isa = PBXBuildFile; fileRef = A7D8030319663F7F00B4F903 /* bogeylock-ka.aif */; };
+		A7D8030719663F7F00B4F903 /* bogeylock-x.aif in Resources */ = {isa = PBXBuildFile; fileRef = A7D8030419663F7F00B4F903 /* bogeylock-x.aif */; };
+		A7F7A39418E8D8F5004E12AC /* TFColorSwatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F7A39318E8D8F5004E12AC /* TFColorSwatchView.m */; };
+		A7F7A39718E8DDE3004E12AC /* TFChooseColorController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F7A39618E8DDE3004E12AC /* TFChooseColorController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A729368B18596CA90028ECDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A729365D18596CA80028ECDB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A729366418596CA80028ECDB;
+			remoteInfo = StealthAssist;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		960E9FEED75B507E569F2BF0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		97334D35FCBCF6F0E5C14626 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A723D93319F45452005B2A16 /* TFAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFAlertView.h; sourceTree = "<group>"; };
+		A723D93419F45452005B2A16 /* TFAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFAlertView.m; sourceTree = "<group>"; };
+		A729366518596CA80028ECDB /* StealthAssist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthAssist.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A729366818596CA80028ECDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A729366A18596CA80028ECDB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A729366C18596CA80028ECDB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A729367018596CA80028ECDB /* StealthAssist-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StealthAssist-Info.plist"; sourceTree = "<group>"; };
+		A729367218596CA80028ECDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A729367418596CA80028ECDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A729367618596CA80028ECDB /* StealthAssist-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StealthAssist-Prefix.pch"; sourceTree = "<group>"; };
+		A729367718596CA80028ECDB /* TFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFAppDelegate.h; sourceTree = "<group>"; };
+		A729367818596CA80028ECDB /* TFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFAppDelegate.m; sourceTree = "<group>"; };
+		A729367D18596CA80028ECDB /* TFMainDisplayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFMainDisplayViewController.h; sourceTree = "<group>"; };
+		A729367E18596CA80028ECDB /* TFMainDisplayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFMainDisplayViewController.m; sourceTree = "<group>"; };
+		A729368018596CA80028ECDB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A729368618596CA90028ECDB /* StealthAssistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StealthAssistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A729368718596CA90028ECDB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A729368F18596CA90028ECDB /* StealthAssistTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StealthAssistTests-Info.plist"; sourceTree = "<group>"; };
+		A729369118596CA90028ECDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A729369318596CA90028ECDB /* StealthAssistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StealthAssistTests.m; sourceTree = "<group>"; };
+		A72B291D196861C50061D5B3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A736CCDB1873A48800F9746C /* TFAlertOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFAlertOverlay.h; sourceTree = "<group>"; };
+		A736CCDC1873A48800F9746C /* TFAlertOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFAlertOverlay.m; sourceTree = "<group>"; };
+		A736CCDE1873C85B00F9746C /* TFMainDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFMainDisplay.h; sourceTree = "<group>"; };
+		A736CCDF1873C85B00F9746C /* TFMainDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFMainDisplay.m; sourceTree = "<group>"; };
+		A736CCE11874BEA100F9746C /* TFHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHelpViewController.h; sourceTree = "<group>"; };
+		A736CCE21874BEA100F9746C /* TFHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHelpViewController.m; sourceTree = "<group>"; };
+		A736CCE51874C39300F9746C /* WSCoachMarksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCoachMarksView.m; sourceTree = "<group>"; };
+		A736CCE61874C39300F9746C /* WSCoachMarksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCoachMarksView.h; sourceTree = "<group>"; };
+		A736CCEC1877A2E000F9746C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A736CCF71879FA5700F9746C /* TFDeviceHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFDeviceHardware.h; sourceTree = "<group>"; };
+		A736CCF81879FA5700F9746C /* TFDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFDeviceHardware.m; sourceTree = "<group>"; };
+		A736CD02187A1EA600F9746C /* TFFAQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFAQViewController.h; sourceTree = "<group>"; };
+		A736CD03187A1EA600F9746C /* TFFAQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFAQViewController.m; sourceTree = "<group>"; };
+		A736CD06187A1F2900F9746C /* TFTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFTableViewController.h; sourceTree = "<group>"; };
+		A736CD07187A1F2900F9746C /* TFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFTableViewController.m; sourceTree = "<group>"; };
+		A736CD0A187A213D00F9746C /* TFFAQEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFAQEntry.h; sourceTree = "<group>"; };
+		A736CD0B187A213D00F9746C /* TFFAQEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFAQEntry.m; sourceTree = "<group>"; };
+		A736CD0E187A259200F9746C /* TFFAQCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFAQCell.h; sourceTree = "<group>"; };
+		A736CD0F187A259200F9746C /* TFFAQCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFAQCell.m; sourceTree = "<group>"; };
+		A7382A241B54904C005B5D31 /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
+		A7382A251B54904C005B5D31 /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		A7382A261B54904C005B5D31 /* CrittercismConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismConfig.h; sourceTree = "<group>"; };
+		A7382A271B54904C005B5D31 /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		A7382A281B54904C005B5D31 /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
+		A7382A291B54904C005B5D31 /* libCrittercism_v5_2_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v5_2_0.a; sourceTree = "<group>"; };
+		A7382A2B1B54904C005B5D31 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		A7382A2C1B54904C005B5D31 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
+		A7382A2D1B54904C005B5D31 /* libFlurry_6.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.5.0.a; sourceTree = "<group>"; };
+		A7382A331B54909F005B5D31 /* AlertCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertCollection.h; sourceTree = "<group>"; };
+		A7382A341B54909F005B5D31 /* AlertData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertData.h; sourceTree = "<group>"; };
+		A7382A351B54909F005B5D31 /* AlertOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertOutput.h; sourceTree = "<group>"; };
+		A7382A361B54909F005B5D31 /* BTDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDiscovery.h; sourceTree = "<group>"; };
+		A7382A371B54909F005B5D31 /* CustomSweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSweep.h; sourceTree = "<group>"; };
+		A7382A381B54909F005B5D31 /* CustomSweepObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSweepObject.h; sourceTree = "<group>"; };
+		A7382A391B54909F005B5D31 /* DeviceInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInformation.h; sourceTree = "<group>"; };
+		A7382A3A1B54909F005B5D31 /* DisplayAndAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayAndAudio.h; sourceTree = "<group>"; };
+		A7382A3B1B54909F005B5D31 /* DisplayData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayData.h; sourceTree = "<group>"; };
+		A7382A3C1B54909F005B5D31 /* ESPPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESPPacket.h; sourceTree = "<group>"; };
+		A7382A3D1B54909F005B5D31 /* ESPPacketCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESPPacketCollection.h; sourceTree = "<group>"; };
+		A7382A3E1B54909F005B5D31 /* Miscellaneous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Miscellaneous.h; sourceTree = "<group>"; };
+		A7382A3F1B54909F005B5D31 /* PacketAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketAction.h; sourceTree = "<group>"; };
+		A7382A401B54909F005B5D31 /* PacketTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketTypes.h; sourceTree = "<group>"; };
+		A7382A411B54909F005B5D31 /* SavvySpecific.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavvySpecific.h; sourceTree = "<group>"; };
+		A7382A421B54909F005B5D31 /* SavvyStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavvyStatus.h; sourceTree = "<group>"; };
+		A7382A431B54909F005B5D31 /* SendRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendRequest.h; sourceTree = "<group>"; };
+		A7382A441B54909F005B5D31 /* UserBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBytes.h; sourceTree = "<group>"; };
+		A7382A451B54909F005B5D31 /* UserSetupOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetupOptions.h; sourceTree = "<group>"; };
+		A7382A461B54909F005B5D31 /* ValentineCommunicationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValentineCommunicationService.h; sourceTree = "<group>"; };
+		A7382A471B54909F005B5D31 /* libESPLibrary_2_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libESPLibrary_2_0.a; sourceTree = "<group>"; };
+		A74D993218B03AC000E129DA /* TFAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFAnalytics.h; sourceTree = "<group>"; };
+		A74D993318B03AC000E129DA /* TFAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFAnalytics.m; sourceTree = "<group>"; };
+		A74D993518B140FC00E129DA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A74D993718B146E500E129DA /* TFAppUnlockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFAppUnlockManager.h; sourceTree = "<group>"; };
+		A74D993818B146E500E129DA /* TFAppUnlockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFAppUnlockManager.m; sourceTree = "<group>"; };
+		A74D993A18B1539800E129DA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A788784A19845A7A00A3E525 /* TFSignalStrengthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFSignalStrengthView.h; sourceTree = "<group>"; };
+		A788784B19845A7A00A3E525 /* TFSignalStrengthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFSignalStrengthView.m; sourceTree = "<group>"; };
+		A7A4D279186E9D84009DC961 /* TFSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFSettingsViewController.h; sourceTree = "<group>"; };
+		A7A4D27A186E9D84009DC961 /* TFSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFSettingsViewController.m; sourceTree = "<group>"; };
+		A7A4D27C186EB87C009DC961 /* TFAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFAppearance.h; sourceTree = "<group>"; };
+		A7A4D27E186EC885009DC961 /* TFControlDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFControlDrawer.h; sourceTree = "<group>"; };
+		A7A4D27F186EC885009DC961 /* TFControlDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFControlDrawer.m; sourceTree = "<group>"; };
+		A7A4F2CF18831AA40080CD8E /* UIColor+LighterAndDarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LighterAndDarker.h"; sourceTree = "<group>"; };
+		A7A4F2D018831AA40080CD8E /* UIColor+LighterAndDarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LighterAndDarker.m"; sourceTree = "<group>"; };
+		A7A5E84A18E8C34300BE1EA5 /* TFSettingsColorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFSettingsColorController.h; sourceTree = "<group>"; };
+		A7A5E84B18E8C34300BE1EA5 /* TFSettingsColorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFSettingsColorController.m; sourceTree = "<group>"; };
+		A7BF7941186BBDB0009D0D4E /* TFPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFPreferences.h; sourceTree = "<group>"; };
+		A7BF7942186BBDB0009D0D4E /* TFPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFPreferences.m; sourceTree = "<group>"; };
+		A7D8030019663BC400B4F903 /* bogeylock.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = bogeylock.aif; path = Audio/bogeylock.aif; sourceTree = "<group>"; };
+		A7D8030219663F7F00B4F903 /* bogeylock-k.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "bogeylock-k.aif"; path = "Audio/bogeylock-k.aif"; sourceTree = "<group>"; };
+		A7D8030319663F7F00B4F903 /* bogeylock-ka.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "bogeylock-ka.aif"; path = "Audio/bogeylock-ka.aif"; sourceTree = "<group>"; };
+		A7D8030419663F7F00B4F903 /* bogeylock-x.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "bogeylock-x.aif"; path = "Audio/bogeylock-x.aif"; sourceTree = "<group>"; };
+		A7F7A39218E8D8F5004E12AC /* TFColorSwatchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFColorSwatchView.h; sourceTree = "<group>"; };
+		A7F7A39318E8D8F5004E12AC /* TFColorSwatchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFColorSwatchView.m; sourceTree = "<group>"; };
+		A7F7A39518E8DDE3004E12AC /* TFChooseColorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFChooseColorController.h; sourceTree = "<group>"; };
+		A7F7A39618E8DDE3004E12AC /* TFChooseColorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFChooseColorController.m; sourceTree = "<group>"; };
+		A7F7A39818E913DF004E12AC /* TFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFConstants.h; sourceTree = "<group>"; };
+		D36E0B344479DC7787243E8C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A729366218596CA80028ECDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7382A2F1B54904C005B5D31 /* libCrittercism_v5_2_0.a in Frameworks */,
+				A72B291E196861C50061D5B3 /* AudioToolbox.framework in Frameworks */,
+				A74D993B18B1539900E129DA /* Security.framework in Frameworks */,
+				A74D993618B140FC00E129DA /* StoreKit.framework in Frameworks */,
+				A736CCED1877A2E000F9746C /* SystemConfiguration.framework in Frameworks */,
+				A729366B18596CA80028ECDB /* CoreGraphics.framework in Frameworks */,
+				A7382A301B54904C005B5D31 /* libFlurry_6.5.0.a in Frameworks */,
+				A729366D18596CA80028ECDB /* UIKit.framework in Frameworks */,
+				A729366918596CA80028ECDB /* Foundation.framework in Frameworks */,
+				071D4717686C06D331699D05 /* Pods.framework in Frameworks */,
+				A7382A481B54909F005B5D31 /* libESPLibrary_2_0.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A729368318596CA90028ECDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A729368818596CA90028ECDB /* XCTest.framework in Frameworks */,
+				A729368A18596CA90028ECDB /* UIKit.framework in Frameworks */,
+				A729368918596CA90028ECDB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		072E56512833BC879F2DC50F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				960E9FEED75B507E569F2BF0 /* Pods.debug.xcconfig */,
+				D36E0B344479DC7787243E8C /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A729365C18596CA80028ECDB = {
+			isa = PBXGroup;
+			children = (
+				A729366E18596CA80028ECDB /* StealthAssist */,
+				A729368D18596CA90028ECDB /* StealthAssistTests */,
+				A729366718596CA80028ECDB /* Frameworks */,
+				A729366618596CA80028ECDB /* Products */,
+				072E56512833BC879F2DC50F /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		A729366618596CA80028ECDB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A729366518596CA80028ECDB /* StealthAssist.app */,
+				A729368618596CA90028ECDB /* StealthAssistTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A729366718596CA80028ECDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A72B291D196861C50061D5B3 /* AudioToolbox.framework */,
+				A74D993A18B1539800E129DA /* Security.framework */,
+				A74D993518B140FC00E129DA /* StoreKit.framework */,
+				A736CCEC1877A2E000F9746C /* SystemConfiguration.framework */,
+				A729366818596CA80028ECDB /* Foundation.framework */,
+				A729366A18596CA80028ECDB /* CoreGraphics.framework */,
+				A729366C18596CA80028ECDB /* UIKit.framework */,
+				A729368718596CA90028ECDB /* XCTest.framework */,
+				97334D35FCBCF6F0E5C14626 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A729366E18596CA80028ECDB /* StealthAssist */ = {
+			isa = PBXGroup;
+			children = (
+				A729367718596CA80028ECDB /* TFAppDelegate.h */,
+				A729367818596CA80028ECDB /* TFAppDelegate.m */,
+				A7BF7941186BBDB0009D0D4E /* TFPreferences.h */,
+				A7BF7942186BBDB0009D0D4E /* TFPreferences.m */,
+				A7A4D27C186EB87C009DC961 /* TFAppearance.h */,
+				A7F7A39818E913DF004E12AC /* TFConstants.h */,
+				A74D993718B146E500E129DA /* TFAppUnlockManager.h */,
+				A74D993818B146E500E129DA /* TFAppUnlockManager.m */,
+				A736CCF61879FA3900F9746C /* Helpers */,
+				A74D993118B03AA400E129DA /* Analytics */,
+				A7A4D278186E9D60009DC961 /* View Controllers */,
+				A7A4D27D186EC863009DC961 /* Views */,
+				A736CD09187A212300F9746C /* Models */,
+				A729368018596CA80028ECDB /* Images.xcassets */,
+				A7D802FF19663BBA00B4F903 /* Audio */,
+				A729369D185975B60028ECDB /* Third Party */,
+				A729366F18596CA80028ECDB /* Supporting Files */,
+			);
+			path = StealthAssist;
+			sourceTree = "<group>";
+		};
+		A729366F18596CA80028ECDB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A729367018596CA80028ECDB /* StealthAssist-Info.plist */,
+				A729367118596CA80028ECDB /* InfoPlist.strings */,
+				A729367418596CA80028ECDB /* main.m */,
+				A729367618596CA80028ECDB /* StealthAssist-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A729368D18596CA90028ECDB /* StealthAssistTests */ = {
+			isa = PBXGroup;
+			children = (
+				A729369318596CA90028ECDB /* StealthAssistTests.m */,
+				A729368E18596CA90028ECDB /* Supporting Files */,
+			);
+			path = StealthAssistTests;
+			sourceTree = "<group>";
+		};
+		A729368E18596CA90028ECDB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A729368F18596CA90028ECDB /* StealthAssistTests-Info.plist */,
+				A729369018596CA90028ECDB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A729369D185975B60028ECDB /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				A7382A231B54904C005B5D31 /* CrittercismSDK */,
+				A7382A311B54909F005B5D31 /* ESPLibrary */,
+				A7382A2A1B54904C005B5D31 /* Flurry */,
+				A736CCE41874C38200F9746C /* WSCoachMarksView */,
+			);
+			name = "Third Party";
+			sourceTree = "<group>";
+		};
+		A736CCE41874C38200F9746C /* WSCoachMarksView */ = {
+			isa = PBXGroup;
+			children = (
+				A736CCE51874C39300F9746C /* WSCoachMarksView.m */,
+				A736CCE61874C39300F9746C /* WSCoachMarksView.h */,
+			);
+			name = WSCoachMarksView;
+			sourceTree = "<group>";
+		};
+		A736CCF61879FA3900F9746C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A736CCF71879FA5700F9746C /* TFDeviceHardware.h */,
+				A736CCF81879FA5700F9746C /* TFDeviceHardware.m */,
+				A7A4F2CF18831AA40080CD8E /* UIColor+LighterAndDarker.h */,
+				A7A4F2D018831AA40080CD8E /* UIColor+LighterAndDarker.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		A736CD05187A1F1200F9746C /* Table View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A736CD06187A1F2900F9746C /* TFTableViewController.h */,
+				A736CD07187A1F2900F9746C /* TFTableViewController.m */,
+				A7A5E84818E8C2D400BE1EA5 /* Settings */,
+				A7A5E84918E8C2E600BE1EA5 /* Help */,
+			);
+			name = "Table View Controllers";
+			sourceTree = "<group>";
+		};
+		A736CD09187A212300F9746C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A736CD0A187A213D00F9746C /* TFFAQEntry.h */,
+				A736CD0B187A213D00F9746C /* TFFAQEntry.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A736CD0D187A227B00F9746C /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A736CD0E187A259200F9746C /* TFFAQCell.h */,
+				A736CD0F187A259200F9746C /* TFFAQCell.m */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		A7382A231B54904C005B5D31 /* CrittercismSDK */ = {
+			isa = PBXGroup;
+			children = (
+				A7382A241B54904C005B5D31 /* CRFilter.h */,
+				A7382A251B54904C005B5D31 /* Crittercism.h */,
+				A7382A261B54904C005B5D31 /* CrittercismConfig.h */,
+				A7382A271B54904C005B5D31 /* CrittercismDelegate.h */,
+				A7382A281B54904C005B5D31 /* dsym_upload.sh */,
+				A7382A291B54904C005B5D31 /* libCrittercism_v5_2_0.a */,
+			);
+			path = CrittercismSDK;
+			sourceTree = "<group>";
+		};
+		A7382A2A1B54904C005B5D31 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				A7382A2B1B54904C005B5D31 /* Flurry.h */,
+				A7382A2C1B54904C005B5D31 /* FlurryWatch.h */,
+				A7382A2D1B54904C005B5D31 /* libFlurry_6.5.0.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
+		A7382A311B54909F005B5D31 /* ESPLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				A7382A321B54909F005B5D31 /* Include */,
+				A7382A471B54909F005B5D31 /* libESPLibrary_2_0.a */,
+			);
+			path = ESPLibrary;
+			sourceTree = "<group>";
+		};
+		A7382A321B54909F005B5D31 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				A7382A331B54909F005B5D31 /* AlertCollection.h */,
+				A7382A341B54909F005B5D31 /* AlertData.h */,
+				A7382A351B54909F005B5D31 /* AlertOutput.h */,
+				A7382A361B54909F005B5D31 /* BTDiscovery.h */,
+				A7382A371B54909F005B5D31 /* CustomSweep.h */,
+				A7382A381B54909F005B5D31 /* CustomSweepObject.h */,
+				A7382A391B54909F005B5D31 /* DeviceInformation.h */,
+				A7382A3A1B54909F005B5D31 /* DisplayAndAudio.h */,
+				A7382A3B1B54909F005B5D31 /* DisplayData.h */,
+				A7382A3C1B54909F005B5D31 /* ESPPacket.h */,
+				A7382A3D1B54909F005B5D31 /* ESPPacketCollection.h */,
+				A7382A3E1B54909F005B5D31 /* Miscellaneous.h */,
+				A7382A3F1B54909F005B5D31 /* PacketAction.h */,
+				A7382A401B54909F005B5D31 /* PacketTypes.h */,
+				A7382A411B54909F005B5D31 /* SavvySpecific.h */,
+				A7382A421B54909F005B5D31 /* SavvyStatus.h */,
+				A7382A431B54909F005B5D31 /* SendRequest.h */,
+				A7382A441B54909F005B5D31 /* UserBytes.h */,
+				A7382A451B54909F005B5D31 /* UserSetupOptions.h */,
+				A7382A461B54909F005B5D31 /* ValentineCommunicationService.h */,
+			);
+			path = Include;
+			sourceTree = "<group>";
+		};
+		A74D993118B03AA400E129DA /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				A74D993218B03AC000E129DA /* TFAnalytics.h */,
+				A74D993318B03AC000E129DA /* TFAnalytics.m */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		A7A4D278186E9D60009DC961 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A729367D18596CA80028ECDB /* TFMainDisplayViewController.h */,
+				A729367E18596CA80028ECDB /* TFMainDisplayViewController.m */,
+				A736CD05187A1F1200F9746C /* Table View Controllers */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A7A4D27D186EC863009DC961 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A736CD0D187A227B00F9746C /* Table View Cells */,
+				A7F7A39118E8D8C5004E12AC /* Colors */,
+				A736CCDE1873C85B00F9746C /* TFMainDisplay.h */,
+				A736CCDF1873C85B00F9746C /* TFMainDisplay.m */,
+				A788784A19845A7A00A3E525 /* TFSignalStrengthView.h */,
+				A788784B19845A7A00A3E525 /* TFSignalStrengthView.m */,
+				A7A4D27E186EC885009DC961 /* TFControlDrawer.h */,
+				A7A4D27F186EC885009DC961 /* TFControlDrawer.m */,
+				A736CCDB1873A48800F9746C /* TFAlertOverlay.h */,
+				A736CCDC1873A48800F9746C /* TFAlertOverlay.m */,
+				A723D93319F45452005B2A16 /* TFAlertView.h */,
+				A723D93419F45452005B2A16 /* TFAlertView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A7A5E84818E8C2D400BE1EA5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A7A4D279186E9D84009DC961 /* TFSettingsViewController.h */,
+				A7A4D27A186E9D84009DC961 /* TFSettingsViewController.m */,
+				A7A5E84A18E8C34300BE1EA5 /* TFSettingsColorController.h */,
+				A7A5E84B18E8C34300BE1EA5 /* TFSettingsColorController.m */,
+				A7F7A39518E8DDE3004E12AC /* TFChooseColorController.h */,
+				A7F7A39618E8DDE3004E12AC /* TFChooseColorController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		A7A5E84918E8C2E600BE1EA5 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				A736CCE11874BEA100F9746C /* TFHelpViewController.h */,
+				A736CCE21874BEA100F9746C /* TFHelpViewController.m */,
+				A736CD02187A1EA600F9746C /* TFFAQViewController.h */,
+				A736CD03187A1EA600F9746C /* TFFAQViewController.m */,
+			);
+			name = Help;
+			sourceTree = "<group>";
+		};
+		A7D802FF19663BBA00B4F903 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				A7D8030019663BC400B4F903 /* bogeylock.aif */,
+				A7D8030219663F7F00B4F903 /* bogeylock-k.aif */,
+				A7D8030319663F7F00B4F903 /* bogeylock-ka.aif */,
+				A7D8030419663F7F00B4F903 /* bogeylock-x.aif */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		A7F7A39118E8D8C5004E12AC /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				A7F7A39218E8D8F5004E12AC /* TFColorSwatchView.h */,
+				A7F7A39318E8D8F5004E12AC /* TFColorSwatchView.m */,
+			);
+			name = Colors;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A729366418596CA80028ECDB /* StealthAssist */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A729369718596CA90028ECDB /* Build configuration list for PBXNativeTarget "StealthAssist" */;
+			buildPhases = (
+				DC7F044CBEDC45428FD5787F /* Check Pods Manifest.lock */,
+				A729366118596CA80028ECDB /* Sources */,
+				A729366218596CA80028ECDB /* Frameworks */,
+				A729366318596CA80028ECDB /* Resources */,
+				3F0985F2BADA448DBF28355D /* Copy Pods Resources */,
+				D92CA43DE49852995BA35DE2 /* Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StealthAssist;
+			productName = StealthAssist;
+			productReference = A729366518596CA80028ECDB /* StealthAssist.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A729368518596CA90028ECDB /* StealthAssistTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A729369A18596CA90028ECDB /* Build configuration list for PBXNativeTarget "StealthAssistTests" */;
+			buildPhases = (
+				A729368218596CA90028ECDB /* Sources */,
+				A729368318596CA90028ECDB /* Frameworks */,
+				A729368418596CA90028ECDB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A729368C18596CA90028ECDB /* PBXTargetDependency */,
+			);
+			name = StealthAssistTests;
+			productName = StealthAssistTests;
+			productReference = A729368618596CA90028ECDB /* StealthAssistTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A729365D18596CA80028ECDB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TF;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Tyler Fox";
+				TargetAttributes = {
+					A729366418596CA80028ECDB = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
+					};
+					A729368518596CA90028ECDB = {
+						TestTargetID = A729366418596CA80028ECDB;
+					};
+				};
+			};
+			buildConfigurationList = A729366018596CA80028ECDB /* Build configuration list for PBXProject "StealthAssist" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A729365C18596CA80028ECDB;
+			productRefGroup = A729366618596CA80028ECDB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A729366418596CA80028ECDB /* StealthAssist */,
+				A729368518596CA90028ECDB /* StealthAssistTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A729366318596CA80028ECDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7382A2E1B54904C005B5D31 /* dsym_upload.sh in Resources */,
+				A7D8030519663F7F00B4F903 /* bogeylock-k.aif in Resources */,
+				A729368118596CA80028ECDB /* Images.xcassets in Resources */,
+				A7D8030619663F7F00B4F903 /* bogeylock-ka.aif in Resources */,
+				A729367318596CA80028ECDB /* InfoPlist.strings in Resources */,
+				A7D8030719663F7F00B4F903 /* bogeylock-x.aif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A729368418596CA90028ECDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A729369218596CA90028ECDB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F0985F2BADA448DBF28355D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D92CA43DE49852995BA35DE2 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC7F044CBEDC45428FD5787F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A729366118596CA80028ECDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A723D93519F45452005B2A16 /* TFAlertView.m in Sources */,
+				A74D993418B03AC000E129DA /* TFAnalytics.m in Sources */,
+				A729367F18596CA80028ECDB /* TFMainDisplayViewController.m in Sources */,
+				A736CCE31874BEA100F9746C /* TFHelpViewController.m in Sources */,
+				A74D993918B146E500E129DA /* TFAppUnlockManager.m in Sources */,
+				A7BF7943186BBDB0009D0D4E /* TFPreferences.m in Sources */,
+				A736CCE71874C39300F9746C /* WSCoachMarksView.m in Sources */,
+				A736CD0C187A213D00F9746C /* TFFAQEntry.m in Sources */,
+				A736CCE01873C85B00F9746C /* TFMainDisplay.m in Sources */,
+				A7F7A39418E8D8F5004E12AC /* TFColorSwatchView.m in Sources */,
+				A736CCF91879FA5700F9746C /* TFDeviceHardware.m in Sources */,
+				A7A4F2D118831AA40080CD8E /* UIColor+LighterAndDarker.m in Sources */,
+				A788784C19845A7A00A3E525 /* TFSignalStrengthView.m in Sources */,
+				A7F7A39718E8DDE3004E12AC /* TFChooseColorController.m in Sources */,
+				A736CD10187A259200F9746C /* TFFAQCell.m in Sources */,
+				A7A4D280186EC885009DC961 /* TFControlDrawer.m in Sources */,
+				A736CD04187A1EA600F9746C /* TFFAQViewController.m in Sources */,
+				A7A5E84C18E8C34300BE1EA5 /* TFSettingsColorController.m in Sources */,
+				A729367918596CA80028ECDB /* TFAppDelegate.m in Sources */,
+				A729367518596CA80028ECDB /* main.m in Sources */,
+				A7A4D27B186E9D84009DC961 /* TFSettingsViewController.m in Sources */,
+				A736CCDD1873A48800F9746C /* TFAlertOverlay.m in Sources */,
+				A736CD08187A1F2900F9746C /* TFTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A729368218596CA90028ECDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A729369418596CA90028ECDB /* StealthAssistTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A729368C18596CA90028ECDB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A729366418596CA80028ECDB /* StealthAssist */;
+			targetProxy = A729368B18596CA90028ECDB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A729367118596CA80028ECDB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A729367218596CA80028ECDB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A729369018596CA90028ECDB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A729369118596CA90028ECDB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A729369518596CA90028ECDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"MIXPANEL_NO_IFA=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A729369618596CA90028ECDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A729369818596CA90028ECDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 960E9FEED75B507E569F2BF0 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StealthAssist/StealthAssist-Prefix.pch";
+				INFOPLIST_FILE = "StealthAssist/StealthAssist-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/StealthAssist/ESPLibrary",
+					"$(PROJECT_DIR)/StealthAssist/Flurry",
+					"$(PROJECT_DIR)/StealthAssist/CrittercismSDK",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smileyborg.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A729369918596CA90028ECDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D36E0B344479DC7787243E8C /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StealthAssist/StealthAssist-Prefix.pch";
+				INFOPLIST_FILE = "StealthAssist/StealthAssist-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/StealthAssist/ESPLibrary",
+					"$(PROJECT_DIR)/StealthAssist/Flurry",
+					"$(PROJECT_DIR)/StealthAssist/CrittercismSDK",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smileyborg.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A729369B18596CA90028ECDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/StealthAssist.app/StealthAssist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StealthAssist/StealthAssist-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "StealthAssistTests/StealthAssistTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smileyborg.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A729369C18596CA90028ECDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/StealthAssist.app/StealthAssist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "StealthAssist/StealthAssist-Prefix.pch";
+				INFOPLIST_FILE = "StealthAssistTests/StealthAssistTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smileyborg.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A729366018596CA80028ECDB /* Build configuration list for PBXProject "StealthAssist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A729369518596CA90028ECDB /* Debug */,
+				A729369618596CA90028ECDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A729369718596CA90028ECDB /* Build configuration list for PBXNativeTarget "StealthAssist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A729369818596CA90028ECDB /* Debug */,
+				A729369918596CA90028ECDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A729369A18596CA90028ECDB /* Build configuration list for PBXNativeTarget "StealthAssistTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A729369B18596CA90028ECDB /* Debug */,
+				A729369C18596CA90028ECDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A729365D18596CA80028ECDB /* Project object */;
+}
