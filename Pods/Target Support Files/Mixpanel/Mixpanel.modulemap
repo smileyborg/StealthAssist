@@ -1,5 +1,5 @@
 framework module Mixpanel {
-  umbrella header "Pods-Mixpanel-umbrella.h"
+  umbrella header "Mixpanel-umbrella.h"
 
   export *
   module * { export * }
