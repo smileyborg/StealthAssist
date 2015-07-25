@@ -36,7 +36,6 @@
 		A7382A2E1B54904C005B5D31 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = A7382A281B54904C005B5D31 /* dsym_upload.sh */; };
 		A7382A2F1B54904C005B5D31 /* libCrittercism_v5_2_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7382A291B54904C005B5D31 /* libCrittercism_v5_2_0.a */; };
 		A7382A301B54904C005B5D31 /* libFlurry_6.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7382A2D1B54904C005B5D31 /* libFlurry_6.5.0.a */; };
-		A7382A481B54909F005B5D31 /* libESPLibrary_2_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7382A471B54909F005B5D31 /* libESPLibrary_2_0.a */; };
 		A74D993418B03AC000E129DA /* TFAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = A74D993318B03AC000E129DA /* TFAnalytics.m */; };
 		A74D993618B140FC00E129DA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A74D993518B140FC00E129DA /* StoreKit.framework */; };
 		A74D993918B146E500E129DA /* TFAppUnlockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A74D993818B146E500E129DA /* TFAppUnlockManager.m */; };
@@ -47,6 +46,7 @@
 		A7A4F2D118831AA40080CD8E /* UIColor+LighterAndDarker.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A4F2D018831AA40080CD8E /* UIColor+LighterAndDarker.m */; };
 		A7A5E84C18E8C34300BE1EA5 /* TFSettingsColorController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5E84B18E8C34300BE1EA5 /* TFSettingsColorController.m */; };
 		A7BF7943186BBDB0009D0D4E /* TFPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BF7942186BBDB0009D0D4E /* TFPreferences.m */; };
+		A7C15D731B643C220080DC57 /* libESPLibrary_2_1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C15D721B643C220080DC57 /* libESPLibrary_2_1.a */; };
 		A7D8030519663F7F00B4F903 /* bogeylock-k.aif in Resources */ = {isa = PBXBuildFile; fileRef = A7D8030219663F7F00B4F903 /* bogeylock-k.aif */; };
 		A7D8030619663F7F00B4F903 /* bogeylock-ka.aif in Resources */ = {isa = PBXBuildFile; fileRef = A7D8030319663F7F00B4F903 /* bogeylock-ka.aif */; };
 		A7D8030719663F7F00B4F903 /* bogeylock-x.aif in Resources */ = {isa = PBXBuildFile; fileRef = A7D8030419663F7F00B4F903 /* bogeylock-x.aif */; };
@@ -116,27 +116,6 @@
 		A7382A2B1B54904C005B5D31 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		A7382A2C1B54904C005B5D31 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
 		A7382A2D1B54904C005B5D31 /* libFlurry_6.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.5.0.a; sourceTree = "<group>"; };
-		A7382A331B54909F005B5D31 /* AlertCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertCollection.h; sourceTree = "<group>"; };
-		A7382A341B54909F005B5D31 /* AlertData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertData.h; sourceTree = "<group>"; };
-		A7382A351B54909F005B5D31 /* AlertOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertOutput.h; sourceTree = "<group>"; };
-		A7382A361B54909F005B5D31 /* BTDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDiscovery.h; sourceTree = "<group>"; };
-		A7382A371B54909F005B5D31 /* CustomSweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSweep.h; sourceTree = "<group>"; };
-		A7382A381B54909F005B5D31 /* CustomSweepObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSweepObject.h; sourceTree = "<group>"; };
-		A7382A391B54909F005B5D31 /* DeviceInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInformation.h; sourceTree = "<group>"; };
-		A7382A3A1B54909F005B5D31 /* DisplayAndAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayAndAudio.h; sourceTree = "<group>"; };
-		A7382A3B1B54909F005B5D31 /* DisplayData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayData.h; sourceTree = "<group>"; };
-		A7382A3C1B54909F005B5D31 /* ESPPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESPPacket.h; sourceTree = "<group>"; };
-		A7382A3D1B54909F005B5D31 /* ESPPacketCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESPPacketCollection.h; sourceTree = "<group>"; };
-		A7382A3E1B54909F005B5D31 /* Miscellaneous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Miscellaneous.h; sourceTree = "<group>"; };
-		A7382A3F1B54909F005B5D31 /* PacketAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketAction.h; sourceTree = "<group>"; };
-		A7382A401B54909F005B5D31 /* PacketTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketTypes.h; sourceTree = "<group>"; };
-		A7382A411B54909F005B5D31 /* SavvySpecific.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavvySpecific.h; sourceTree = "<group>"; };
-		A7382A421B54909F005B5D31 /* SavvyStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavvyStatus.h; sourceTree = "<group>"; };
-		A7382A431B54909F005B5D31 /* SendRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendRequest.h; sourceTree = "<group>"; };
-		A7382A441B54909F005B5D31 /* UserBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBytes.h; sourceTree = "<group>"; };
-		A7382A451B54909F005B5D31 /* UserSetupOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetupOptions.h; sourceTree = "<group>"; };
-		A7382A461B54909F005B5D31 /* ValentineCommunicationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValentineCommunicationService.h; sourceTree = "<group>"; };
-		A7382A471B54909F005B5D31 /* libESPLibrary_2_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libESPLibrary_2_0.a; sourceTree = "<group>"; };
 		A74D993218B03AC000E129DA /* TFAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFAnalytics.h; sourceTree = "<group>"; };
 		A74D993318B03AC000E129DA /* TFAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFAnalytics.m; sourceTree = "<group>"; };
 		A74D993518B140FC00E129DA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -156,6 +135,27 @@
 		A7A5E84B18E8C34300BE1EA5 /* TFSettingsColorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFSettingsColorController.m; sourceTree = "<group>"; };
 		A7BF7941186BBDB0009D0D4E /* TFPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFPreferences.h; sourceTree = "<group>"; };
 		A7BF7942186BBDB0009D0D4E /* TFPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFPreferences.m; sourceTree = "<group>"; };
+		A7C15D5E1B643C220080DC57 /* AlertCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertCollection.h; sourceTree = "<group>"; };
+		A7C15D5F1B643C220080DC57 /* AlertData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertData.h; sourceTree = "<group>"; };
+		A7C15D601B643C220080DC57 /* AlertOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertOutput.h; sourceTree = "<group>"; };
+		A7C15D611B643C220080DC57 /* BTDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDiscovery.h; sourceTree = "<group>"; };
+		A7C15D621B643C220080DC57 /* CustomSweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSweep.h; sourceTree = "<group>"; };
+		A7C15D631B643C220080DC57 /* CustomSweepObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSweepObject.h; sourceTree = "<group>"; };
+		A7C15D641B643C220080DC57 /* DeviceInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInformation.h; sourceTree = "<group>"; };
+		A7C15D651B643C220080DC57 /* DisplayAndAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayAndAudio.h; sourceTree = "<group>"; };
+		A7C15D661B643C220080DC57 /* DisplayData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayData.h; sourceTree = "<group>"; };
+		A7C15D671B643C220080DC57 /* ESPPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESPPacket.h; sourceTree = "<group>"; };
+		A7C15D681B643C220080DC57 /* ESPPacketCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESPPacketCollection.h; sourceTree = "<group>"; };
+		A7C15D691B643C220080DC57 /* Miscellaneous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Miscellaneous.h; sourceTree = "<group>"; };
+		A7C15D6A1B643C220080DC57 /* PacketAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketAction.h; sourceTree = "<group>"; };
+		A7C15D6B1B643C220080DC57 /* PacketTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketTypes.h; sourceTree = "<group>"; };
+		A7C15D6C1B643C220080DC57 /* SavvySpecific.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavvySpecific.h; sourceTree = "<group>"; };
+		A7C15D6D1B643C220080DC57 /* SavvyStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavvyStatus.h; sourceTree = "<group>"; };
+		A7C15D6E1B643C220080DC57 /* SendRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendRequest.h; sourceTree = "<group>"; };
+		A7C15D6F1B643C220080DC57 /* UserBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBytes.h; sourceTree = "<group>"; };
+		A7C15D701B643C220080DC57 /* UserSetupOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetupOptions.h; sourceTree = "<group>"; };
+		A7C15D711B643C220080DC57 /* ValentineCommunicationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValentineCommunicationService.h; sourceTree = "<group>"; };
+		A7C15D721B643C220080DC57 /* libESPLibrary_2_1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libESPLibrary_2_1.a; sourceTree = "<group>"; };
 		A7D8030019663BC400B4F903 /* bogeylock.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = bogeylock.aif; path = Audio/bogeylock.aif; sourceTree = "<group>"; };
 		A7D8030219663F7F00B4F903 /* bogeylock-k.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "bogeylock-k.aif"; path = "Audio/bogeylock-k.aif"; sourceTree = "<group>"; };
 		A7D8030319663F7F00B4F903 /* bogeylock-ka.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = "bogeylock-ka.aif"; path = "Audio/bogeylock-ka.aif"; sourceTree = "<group>"; };
@@ -174,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7382A2F1B54904C005B5D31 /* libCrittercism_v5_2_0.a in Frameworks */,
+				A7C15D731B643C220080DC57 /* libESPLibrary_2_1.a in Frameworks */,
 				A72B291E196861C50061D5B3 /* AudioToolbox.framework in Frameworks */,
 				A74D993B18B1539900E129DA /* Security.framework in Frameworks */,
 				A74D993618B140FC00E129DA /* StoreKit.framework in Frameworks */,
@@ -183,7 +184,6 @@
 				A729366D18596CA80028ECDB /* UIKit.framework in Frameworks */,
 				A729366918596CA80028ECDB /* Foundation.framework in Frameworks */,
 				071D4717686C06D331699D05 /* Pods.framework in Frameworks */,
-				A7382A481B54909F005B5D31 /* libESPLibrary_2_0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,37 +384,10 @@
 		A7382A311B54909F005B5D31 /* ESPLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				A7382A321B54909F005B5D31 /* Include */,
-				A7382A471B54909F005B5D31 /* libESPLibrary_2_0.a */,
+				A7C15D5C1B643C220080DC57 /* include */,
+				A7C15D721B643C220080DC57 /* libESPLibrary_2_1.a */,
 			);
 			path = ESPLibrary;
-			sourceTree = "<group>";
-		};
-		A7382A321B54909F005B5D31 /* Include */ = {
-			isa = PBXGroup;
-			children = (
-				A7382A331B54909F005B5D31 /* AlertCollection.h */,
-				A7382A341B54909F005B5D31 /* AlertData.h */,
-				A7382A351B54909F005B5D31 /* AlertOutput.h */,
-				A7382A361B54909F005B5D31 /* BTDiscovery.h */,
-				A7382A371B54909F005B5D31 /* CustomSweep.h */,
-				A7382A381B54909F005B5D31 /* CustomSweepObject.h */,
-				A7382A391B54909F005B5D31 /* DeviceInformation.h */,
-				A7382A3A1B54909F005B5D31 /* DisplayAndAudio.h */,
-				A7382A3B1B54909F005B5D31 /* DisplayData.h */,
-				A7382A3C1B54909F005B5D31 /* ESPPacket.h */,
-				A7382A3D1B54909F005B5D31 /* ESPPacketCollection.h */,
-				A7382A3E1B54909F005B5D31 /* Miscellaneous.h */,
-				A7382A3F1B54909F005B5D31 /* PacketAction.h */,
-				A7382A401B54909F005B5D31 /* PacketTypes.h */,
-				A7382A411B54909F005B5D31 /* SavvySpecific.h */,
-				A7382A421B54909F005B5D31 /* SavvyStatus.h */,
-				A7382A431B54909F005B5D31 /* SendRequest.h */,
-				A7382A441B54909F005B5D31 /* UserBytes.h */,
-				A7382A451B54909F005B5D31 /* UserSetupOptions.h */,
-				A7382A461B54909F005B5D31 /* ValentineCommunicationService.h */,
-			);
-			path = Include;
 			sourceTree = "<group>";
 		};
 		A74D993118B03AA400E129DA /* Analytics */ = {
@@ -477,6 +450,41 @@
 				A736CD03187A1EA600F9746C /* TFFAQViewController.m */,
 			);
 			name = Help;
+			sourceTree = "<group>";
+		};
+		A7C15D5C1B643C220080DC57 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A7C15D5D1B643C220080DC57 /* ESPLibrary */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		A7C15D5D1B643C220080DC57 /* ESPLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				A7C15D5E1B643C220080DC57 /* AlertCollection.h */,
+				A7C15D5F1B643C220080DC57 /* AlertData.h */,
+				A7C15D601B643C220080DC57 /* AlertOutput.h */,
+				A7C15D611B643C220080DC57 /* BTDiscovery.h */,
+				A7C15D621B643C220080DC57 /* CustomSweep.h */,
+				A7C15D631B643C220080DC57 /* CustomSweepObject.h */,
+				A7C15D641B643C220080DC57 /* DeviceInformation.h */,
+				A7C15D651B643C220080DC57 /* DisplayAndAudio.h */,
+				A7C15D661B643C220080DC57 /* DisplayData.h */,
+				A7C15D671B643C220080DC57 /* ESPPacket.h */,
+				A7C15D681B643C220080DC57 /* ESPPacketCollection.h */,
+				A7C15D691B643C220080DC57 /* Miscellaneous.h */,
+				A7C15D6A1B643C220080DC57 /* PacketAction.h */,
+				A7C15D6B1B643C220080DC57 /* PacketTypes.h */,
+				A7C15D6C1B643C220080DC57 /* SavvySpecific.h */,
+				A7C15D6D1B643C220080DC57 /* SavvyStatus.h */,
+				A7C15D6E1B643C220080DC57 /* SendRequest.h */,
+				A7C15D6F1B643C220080DC57 /* UserBytes.h */,
+				A7C15D701B643C220080DC57 /* UserSetupOptions.h */,
+				A7C15D711B643C220080DC57 /* ValentineCommunicationService.h */,
+			);
+			path = ESPLibrary;
 			sourceTree = "<group>";
 		};
 		A7D802FF19663BBA00B4F903 /* Audio */ = {
