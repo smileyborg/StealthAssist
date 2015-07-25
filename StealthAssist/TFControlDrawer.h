@@ -19,7 +19,7 @@
 
 @protocol TFControlDrawerDelegate <NSObject>
 
-- (void)toggleControlDrawer;
+- (void)toggleControlDrawerWithCompletionHandler:(void (^)())completion;
 - (void)controlDrawerShowSettings;
 - (void)controlDrawerShowHelp;
 - (void)controlDrawerEnterStandby;

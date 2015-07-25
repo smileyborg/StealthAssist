@@ -228,7 +228,7 @@
 
 - (void)toggleDrawer
 {
-    [self.delegate toggleControlDrawer];
+    [self.delegate toggleControlDrawerWithCompletionHandler:nil];
 }
 
 - (void)settingsButtonTapped

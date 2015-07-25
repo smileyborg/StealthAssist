@@ -387,7 +387,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
         self.rotationAlert = nil;
     }
     
-    [self closeDrawer];
+    [self closeDrawerWithCompletionHandler:nil];
     [self disconnectV1];
     [self.locationManager stopUpdatingLocation];
     [self resetState];
@@ -509,13 +509,13 @@ typedef NS_ENUM(NSInteger, TFV1State) {
         timers = @[[NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(changeSpeed) userInfo:nil repeats:YES]];
     }
     else if (index == 6) {
-        [self openDrawer];
+        [self openDrawerWithCompletionHandler:nil];
     }
 }
 
 - (void)coachMarksViewWillCleanup:(WSCoachMarksView *)coachMarksView
 {
-    [self closeDrawer];
+    [self closeDrawerWithCompletionHandler:nil];
 }
 
 - (void)coachMarksViewDidCleanup:(WSCoachMarksView *)coachMarksView
@@ -527,21 +527,21 @@ typedef NS_ENUM(NSInteger, TFV1State) {
     [self wakeFromStandbyMode];
 }
 
-- (void)openDrawer
+- (void)openDrawerWithCompletionHandler:(void (^)())completion
 {
     if (self.controlDrawer.isDrawerOpen == NO) {
-        [self toggleControlDrawer];
+        [self toggleControlDrawerWithCompletionHandler:completion];
     }
 }
 
-- (void)closeDrawer
+- (void)closeDrawerWithCompletionHandler:(void (^)())completion
 {
     if (self.controlDrawer.isDrawerOpen) {
-        [self toggleControlDrawer];
+        [self toggleControlDrawerWithCompletionHandler:completion];
     }
 }
 
-- (void)toggleControlDrawer
+- (void)toggleControlDrawerWithCompletionHandler:(void (^)())completion
 {
     if (self.controlDrawer.isDrawerToggling) {
         return;
@@ -575,6 +575,9 @@ typedef NS_ENUM(NSInteger, TFV1State) {
                                               }
                                               self.controlDrawer.isDrawerOpen = !self.controlDrawer.isDrawerOpen;
                                               self.controlDrawer.isDrawerToggling = NO;
+                                              if (completion) {
+                                                  completion();
+                                              }
                                           }];
                      }];
 }
@@ -643,7 +646,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
 {
     [TFAnalytics track:@"Drawer: Enter Standby Mode"];
     [self enterStandbyMode];
-    [self closeDrawer];
+    [self closeDrawerWithCompletionHandler:nil];
 }
 
 - (void)appDidEnterBackground
@@ -1244,15 +1247,12 @@ typedef NS_ENUM(NSInteger, TFV1State) {
     self.purchasingUnlockOverlay = nil;
     
     // Close the control drawer, then once the animation completes, reload it so that the unlock button is removed
-    [self closeDrawer];
-    double delayInSeconds = kSlideAnimationDuration + kOverSlideAnimationDuration;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    [self closeDrawerWithCompletionHandler:^{
         [self.controlDrawer removeFromSuperview];
         self.controlDrawer = [[TFControlDrawer alloc] initWithDelegate:self];
         [self.view addSubview:self.controlDrawer];
         [self updateControlDrawerFrameForOrientation:self.interfaceOrientation withOverslide:NO];
-    });
+    }];
 }
 
 - (void)appUnlockFailed:(NSNotification *)notification
