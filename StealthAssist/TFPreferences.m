@@ -162,6 +162,12 @@
     [[NSUserDefaults standardUserDefaults] setObject:@(timeToRunInBackgroundUnplugged) forKey:kTimeToRunInBackgroundUnpluggedPreferencesKey];
 }
 
+- (void)registerForBackgroundNotifications
+{
+    UIUserNotificationType types = UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:types categories:nil]];
+}
+
 - (BOOL)displayBackgroundNotifications
 {
     id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kDisplayBackgroundNotificationsPreferencesKey];
@@ -169,11 +175,20 @@
     if (hasStoredPreference == NO) {
         [self setDisplayBackgroundNotifications:kDefaultDisplayBackgroundNotifications];
     }
-    return hasStoredPreference ? [storedPreference boolValue] : kDefaultDisplayBackgroundNotifications;
+    BOOL displayBackgroundNotifications = hasStoredPreference ? [storedPreference boolValue] : kDefaultDisplayBackgroundNotifications;
+    if (displayBackgroundNotifications) {
+        // Register for background notifications if enabled here (even when just reading the property) to handle the case where the property is set to YES
+        // but we still don't have permissions for some reason. (e.g. setting was enabled before updating to iOS 9 and using v1.4 of the app)
+        [self registerForBackgroundNotifications];
+    }
+    return displayBackgroundNotifications;
 }
 
 - (void)setDisplayBackgroundNotifications:(BOOL)displayBackgroundNotifications
 {
+    if (displayBackgroundNotifications) {
+        [self registerForBackgroundNotifications];
+    }
     [[NSUserDefaults standardUserDefaults] setObject:@(displayBackgroundNotifications) forKey:kDisplayBackgroundNotificationsPreferencesKey];
 }
 
