@@ -36,6 +36,7 @@
 		A7382A2E1B54904C005B5D31 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = A7382A281B54904C005B5D31 /* dsym_upload.sh */; };
 		A7382A2F1B54904C005B5D31 /* libCrittercism_v5_2_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7382A291B54904C005B5D31 /* libCrittercism_v5_2_0.a */; };
 		A7382A301B54904C005B5D31 /* libFlurry_6.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7382A2D1B54904C005B5D31 /* libFlurry_6.5.0.a */; };
+		A740AB171B644E7800D5D1B1 /* UIView+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = A740AB161B644E7800D5D1B1 /* UIView+Orientation.m */; };
 		A74D993418B03AC000E129DA /* TFAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = A74D993318B03AC000E129DA /* TFAnalytics.m */; };
 		A74D993618B140FC00E129DA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A74D993518B140FC00E129DA /* StoreKit.framework */; };
 		A74D993918B146E500E129DA /* TFAppUnlockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A74D993818B146E500E129DA /* TFAppUnlockManager.m */; };
@@ -116,6 +117,8 @@
 		A7382A2B1B54904C005B5D31 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		A7382A2C1B54904C005B5D31 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
 		A7382A2D1B54904C005B5D31 /* libFlurry_6.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.5.0.a; sourceTree = "<group>"; };
+		A740AB151B644E7800D5D1B1 /* UIView+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Orientation.h"; sourceTree = "<group>"; };
+		A740AB161B644E7800D5D1B1 /* UIView+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Orientation.m"; sourceTree = "<group>"; };
 		A74D993218B03AC000E129DA /* TFAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFAnalytics.h; sourceTree = "<group>"; };
 		A74D993318B03AC000E129DA /* TFAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFAnalytics.m; sourceTree = "<group>"; };
 		A74D993518B140FC00E129DA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -325,6 +328,8 @@
 				A736CCF81879FA5700F9746C /* TFDeviceHardware.m */,
 				A7A4F2CF18831AA40080CD8E /* UIColor+LighterAndDarker.h */,
 				A7A4F2D018831AA40080CD8E /* UIColor+LighterAndDarker.m */,
+				A740AB151B644E7800D5D1B1 /* UIView+Orientation.h */,
+				A740AB161B644E7800D5D1B1 /* UIView+Orientation.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -684,6 +689,7 @@
 				A788784C19845A7A00A3E525 /* TFSignalStrengthView.m in Sources */,
 				A7F7A39718E8DDE3004E12AC /* TFChooseColorController.m in Sources */,
 				A736CD10187A259200F9746C /* TFFAQCell.m in Sources */,
+				A740AB171B644E7800D5D1B1 /* UIView+Orientation.m in Sources */,
 				A7A4D280186EC885009DC961 /* TFControlDrawer.m in Sources */,
 				A736CD04187A1EA600F9746C /* TFFAQViewController.m in Sources */,
 				A7A5E84C18E8C34300BE1EA5 /* TFSettingsColorController.m in Sources */,
