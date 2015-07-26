@@ -1723,14 +1723,14 @@ typedef NS_ENUM(NSInteger, TFV1State) {
 // DEMO method - cycles through the bogey count
 - (void)changeBogeyCount
 {
-    //    static BOOL goingUp = YES;
-    //
-    //    self.mainDisplay.bogeyCount = self.mainDisplay.bogeyCount + (goingUp ? 1 : -1);
-    //    if (self.mainDisplay.bogeyCount >= 9) {
-    //        goingUp = NO;
-    //    } else if (self.mainDisplay.bogeyCount <= 0) {
-    //        goingUp = YES;
-    //    }
+//    static BOOL goingUp = YES;
+//    
+//    self.mainDisplay.bogeyCount = self.mainDisplay.bogeyCount + (goingUp ? 1 : -1);
+//    if (self.mainDisplay.bogeyCount >= 9) {
+//        goingUp = NO;
+//    } else if (self.mainDisplay.bogeyCount <= 0) {
+//        goingUp = YES;
+//    }
     static NSInteger count = 0;
     
     if (count == 0) {
