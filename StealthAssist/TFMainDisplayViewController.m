@@ -278,7 +278,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
     if ([[TFPreferences sharedInstance] shouldShowTutorial]) {
         [self showTutorial];
     } else if (self.viewJustLoaded) {
-        [self.locationManager startUpdatingLocation];
+        [self startLocationServices];
         
 #if !TARGET_IPHONE_SIMULATOR
         [self connectV1];
@@ -706,7 +706,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
 #endif /* !TARGET_IPHONE_SIMULATOR */
     }
     
-    [self.locationManager startUpdatingLocation];
+    [self startLocationServices];
     
     if (self.standbyOverlay.superview) {
         [UIView animateWithDuration:kStandbyModeFadeAnimationDuration
@@ -719,6 +719,17 @@ typedef NS_ENUM(NSInteger, TFV1State) {
                              [self.standbyOverlay removeFromSuperview];
                              self.standbyOverlay = nil;
                          }];
+    }
+}
+
+/** Starts location services, first requesting permissions from the user if necessary. */
+- (void)startLocationServices
+{
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    if (status == kCLAuthorizationStatusNotDetermined) {
+        [self.locationManager requestAlwaysAuthorization];
+    } else if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        [self.locationManager startUpdatingLocation];
     }
 }
 
@@ -1293,7 +1304,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
     if (location.speed >= 0.0) {
         self.currentSpeed = MPS_TO_MPH(location.speed);
     } else {
-        self.currentSpeed = 0.0f;
+        self.currentSpeed = 0.0;
     }
 }
 
@@ -1309,6 +1320,9 @@ typedef NS_ENUM(NSInteger, TFV1State) {
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
     // TODO: handle denied, restricted (also see above delegate method)
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        [self.locationManager startUpdatingLocation];
+    }
 }
 
 #pragma mark CBCentralManagerDelegate methods

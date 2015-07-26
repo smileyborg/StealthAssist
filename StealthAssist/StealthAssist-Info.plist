@@ -24,7 +24,7 @@
 	<string>1.3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationUsageDescription</key>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>StealthAssist needs this data so it can calculate your speed (required for the Auto Mute feature to work).</string>
 	<key>UIBackgroundModes</key>
 	<array>
