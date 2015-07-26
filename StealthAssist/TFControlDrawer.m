@@ -120,7 +120,7 @@ static const CGFloat kToggleButtonBackgroundCornerRadius = 12.0;
 }
 
 static const CGFloat k3ButtonsEdgePadding = 30.0;
-static const CGFloat k4ButtonsEdgePadding = 20.0;
+static const CGFloat k4ButtonsEdgePadding = 15.0;
 static const CGFloat kToggleButtonSideEdgePadding = 12.0;
 static const CGFloat kToggleButtonEndEdgePadding = 8.0;
 
