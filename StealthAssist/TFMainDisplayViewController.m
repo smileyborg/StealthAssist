@@ -14,6 +14,7 @@
 #import "TFAlertOverlay.h"
 #import "TFSettingsViewController.h"
 #import "TFHelpViewController.h"
+#import "UIView+Orientation.h"
 
 #define MPS_TO_MPH(mps)     (mps * 2.23693629)
 #define MPH_TO_KMH(mph)     (mph * 1.60934)
@@ -257,7 +258,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
 {
     [super viewWillAppear:animated];
     
-    [self updateControlDrawerFrameForOrientation:self.interfaceOrientation withOverslide:NO];
+    [self updateControlDrawerFrameForOrientation:self.view.viewOrientation withOverslide:NO];
     
     [self refreshDisplay];
     
@@ -287,21 +288,28 @@ typedef NS_ENUM(NSInteger, TFV1State) {
     }
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)coordinator
 {
-    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation) != UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-        // Only update the control drawer if going from portrait to landscape or vice versa;
-        // no changes are required when the device changes directly from portrait to portrait upside down,
-        // or landscape left to landscape right (or vice versa).
-        [self updateControlDrawerFrameForOrientation:toInterfaceOrientation withOverslide:NO];
-    }
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    if ([[TFPreferences sharedInstance] shouldShowTutorial]) {
-        [self showTutorial];
-    }
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    ViewOrientation fromOrientation = self.view.viewOrientation;
+    ViewOrientation toOrientation = [UIView viewOrientationForSize:size];
+    
+    [coordinator
+     animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+         if (fromOrientation != toOrientation) {
+             // Only update views if the orientation has changed; no changes are required when the device
+             // rotates directly from portrait to portrait upside down, or landscape left to landscape right (or vice versa).
+             [self.view setNeedsUpdateConstraints];
+             [self updateControlDrawerFrameForOrientation:toOrientation withOverslide:NO];
+         }
+     }
+     completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+         // This block executes after a rotation animation completes
+         if ([[TFPreferences sharedInstance] shouldShowTutorial]) {
+             [self showTutorial];
+         }
+     }];
 }
 
 - (void)updateViewConstraints
@@ -344,14 +352,14 @@ typedef NS_ENUM(NSInteger, TFV1State) {
         self.didSetupConstraints = YES;
     }
     
-    // Handle autorotation
+    // Handle rotation
     [self.mainDisplayConstraint1 autoRemove];
     [self.mainDisplayConstraint2 autoRemove];
     [self.autoMuteSliderConstraint1 autoRemove];
     [self.autoMuteSliderConstraint2 autoRemove];
     [self.autoMuteLabelConstraint autoRemove];
     
-    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+    if (self.view.viewOrientation == ViewOrientationPortrait) {
         self.mainDisplayConstraint1 = [self.mainDisplay autoAlignAxisToSuperviewAxis:ALAxisVertical];
         self.mainDisplayConstraint2 = [self.mainDisplay autoPinToTopLayoutGuideOfViewController:self withInset:0.0f];
         
@@ -376,7 +384,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
 
 - (void)showTutorial
 {
-    if (self.interfaceOrientation != UIInterfaceOrientationPortrait) {
+    if (self.view.viewOrientation != ViewOrientationPortrait) {
         if (!self.rotationAlert) {
             self.rotationAlert = [UIAlertController alertControllerWithTitle:@"Rotate Device" message:@"Please rotate your device upright to portrait orientation to begin the tour." preferredStyle:UIAlertControllerStyleAlert];
             [self presentViewController:self.rotationAlert animated:YES completion:nil];
@@ -559,14 +567,14 @@ typedef NS_ENUM(NSInteger, TFV1State) {
                      animations:^{
                          self.controlDrawer.overlayView.alpha = self.controlDrawer.isDrawerOpen ? 0.0f : 1.0f;
                          self.controlDrawer.toggleButton.imageView.layer.transform = self.controlDrawer.isDrawerOpen ? CATransform3DIdentity : CATransform3DMakeRotation(M_PI, -1.0f, 0.0f, 0.0f);
-                         [self updateControlDrawerFrameForOrientation:self.interfaceOrientation withOverslide:YES];
+                         [self updateControlDrawerFrameForOrientation:self.view.viewOrientation withOverslide:YES];
                      }
                      completion:^(BOOL finished) {
                          [UIView animateWithDuration:kOverSlideAnimationDuration
                                                delay:0.0
                                              options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction
                                           animations:^{
-                                              [self updateControlDrawerFrameForOrientation:self.interfaceOrientation withOverslide:NO];
+                                              [self updateControlDrawerFrameForOrientation:self.view.viewOrientation withOverslide:NO];
                                           }
                                           completion:^(BOOL finished) {
                                               if (self.controlDrawer.isDrawerOpen) {
@@ -583,45 +591,43 @@ typedef NS_ENUM(NSInteger, TFV1State) {
 }
 
 // This method does not provide animation; call from within an animation block to animate the transition.
-- (void)updateControlDrawerFrameForOrientation:(UIInterfaceOrientation)orientation withOverslide:(BOOL)hasOverslide
+- (void)updateControlDrawerFrameForOrientation:(ViewOrientation)orientation withOverslide:(BOOL)hasOverslide
 {
     CGFloat overslideAmount = hasOverslide ? kDrawerOverSlide : 0.0f;
-    // If an autorotation is currently in progress, we need to flip the width and height so that the frame sets correctly
-    CGFloat screenWidth = (orientation == self.interfaceOrientation) ? CGRectGetWidth(self.view.bounds) : CGRectGetHeight(self.view.bounds);
-    CGFloat screenHeight = (orientation == self.interfaceOrientation) ? CGRectGetHeight(self.view.bounds) : CGRectGetWidth(self.view.bounds);
-    if (UIInterfaceOrientationIsPortrait(orientation)) {
+    // If a rotation is currently in progress, we need to flip the width and height so that the frame sets correctly
+    CGFloat viewWidth = (orientation == self.view.viewOrientation) ? CGRectGetWidth(self.view.bounds) : CGRectGetHeight(self.view.bounds);
+    CGFloat viewHeight = (orientation == self.view.viewOrientation) ? CGRectGetHeight(self.view.bounds) : CGRectGetWidth(self.view.bounds);
+    if (orientation == ViewOrientationPortrait) {
         // Portrait
-        [self.controlDrawer rotateToHorizontal:NO];
         if ((self.controlDrawer.isDrawerToggling && self.controlDrawer.isDrawerOpen == NO) ||
             (self.controlDrawer.isDrawerToggling == NO && self.controlDrawer.isDrawerOpen)) {
             // Drawer open position
             self.controlDrawer.frame = CGRectMake(0.0f,
-                                                  screenHeight - kTFControlDrawerHeight - overslideAmount,
-                                                  screenWidth,
+                                                  viewHeight - kTFControlDrawerHeight - overslideAmount,
+                                                  viewWidth,
                                                   kTFControlDrawerHeight);
         } else {
             // Drawer closed position
             self.controlDrawer.frame = CGRectMake(0.0f,
-                                                  screenHeight - kTFControlDrawerTopOverlap + overslideAmount,
-                                                  screenWidth,
+                                                  viewHeight - kTFControlDrawerTopOverlap + overslideAmount,
+                                                  viewWidth,
                                                   kTFControlDrawerHeight);
         }
     } else {
         // Landscape
-        [self.controlDrawer rotateToHorizontal:YES];
         if ((self.controlDrawer.isDrawerToggling && self.controlDrawer.isDrawerOpen == NO) ||
             (self.controlDrawer.isDrawerToggling == NO && self.controlDrawer.isDrawerOpen)) {
             // Drawer open position
-            self.controlDrawer.frame = CGRectMake(screenWidth - kTFControlDrawerHeight - overslideAmount,
+            self.controlDrawer.frame = CGRectMake(viewWidth - kTFControlDrawerHeight - overslideAmount,
                                                   0.0f,
                                                   kTFControlDrawerHeight,
-                                                  screenHeight);
+                                                  viewHeight);
         } else {
             // Drawer closed position
-            self.controlDrawer.frame = CGRectMake(screenWidth - kTFControlDrawerTopOverlap + overslideAmount,
+            self.controlDrawer.frame = CGRectMake(viewWidth - kTFControlDrawerTopOverlap + overslideAmount,
                                                   0.0f,
                                                   kTFControlDrawerHeight,
-                                                  screenHeight);
+                                                  viewHeight);
         }
     }
 }
@@ -1251,7 +1257,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
         [self.controlDrawer removeFromSuperview];
         self.controlDrawer = [[TFControlDrawer alloc] initWithDelegate:self];
         [self.view addSubview:self.controlDrawer];
-        [self updateControlDrawerFrameForOrientation:self.interfaceOrientation withOverslide:NO];
+        [self updateControlDrawerFrameForOrientation:self.view.viewOrientation withOverslide:NO];
     }];
 }
 

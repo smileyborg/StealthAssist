@@ -7,25 +7,25 @@
 //
 
 #import "TFControlDrawer.h"
-
-#define kToggleButtonHorizontalOffsetPercentage 0.75f
-#define kPaddingBetweenControlIcons             25.0f
-#define kToggleButtonBackgroundCornerRadius     12.0f
+#import "UIView+Orientation.h"
 
 @interface TFControlDrawer ()
-
-@property (nonatomic, assign) BOOL didSetupConstraints;
 
 @property (nonatomic, strong, readwrite) UIButton *toggleButton;
 @property (nonatomic, strong) UIView *toggleButtonBackground;
 @property (nonatomic, strong) UIView *drawerBackground; // the visible gray background of the drawer (overdraws for overslide effect)
-@property (nonatomic, strong) UIView *buttonContainer; // contains the buttons, roughly same as drawerBackground but no overdraw (so buttons can center correctly)
+@property (nonatomic, strong) UIStackView *buttonContainer; // contains the buttons, roughly same as drawerBackground but no overdraw (so buttons can center correctly)
 @property (nonatomic, strong) UIButton *settingsButton;
 @property (nonatomic, strong) UIButton *standbyButton;
 @property (nonatomic, strong) UIButton *helpButton;
 @property (nonatomic, strong) UIButton *unlockButton;
 
-@property (nonatomic, assign) CGAffineTransform unlockButtonTransform; // will store the current transform on the unlock button
+/** YES if in the tall layout, NO if in the wide layout. */
+@property (nonatomic, assign) BOOL isTallLayout;
+
+// Only one of these two will ever be non-nil at a time. Stores the constraints used for that particular layout.
+@property (nonatomic, strong) NSArray<NSLayoutConstraint *> *tallConstraints;
+@property (nonatomic, strong) NSArray<NSLayoutConstraint *> *wideConstraints;
 
 @end
 
@@ -52,6 +52,8 @@
     return self;
 }
 
+static const CGFloat kToggleButtonBackgroundCornerRadius = 12.0;
+
 - (void)setupView
 {
     self.toggleButtonBackground = [UIView newAutoLayoutView];
@@ -60,13 +62,8 @@
     [self addSubview:self.toggleButtonBackground];
     
     UIImage *triangleImage = [UIImage imageNamed:@"icon-triangle"];
-    self.toggleButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f,
-                                                                   0.0f,
-                                                                   triangleImage.size.width,
-                                                                   triangleImage.size.height)];
+    self.toggleButton = [UIButton newAutoLayoutView];
     [self.toggleButton setImage:triangleImage forState:UIControlStateNormal];
-    self.toggleButton.center = CGPointMake(CGRectGetMidX(self.bounds), self.toggleButton.center.y);
-    self.toggleButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [self.toggleButton addTarget:self action:@selector(toggleDrawer) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.toggleButton];
     
@@ -74,70 +71,95 @@
     self.drawerBackground.backgroundColor = self.toggleButtonBackground.backgroundColor;
     [self addSubview:self.drawerBackground];
     
-    self.buttonContainer = [UIView newAutoLayoutView];
-    [self.drawerBackground addSubview:self.buttonContainer];
+    NSMutableArray<UIView *> *buttons = [NSMutableArray array];
     
-    self.settingsButton = [UIButton newAutoLayoutView];
+    self.settingsButton = [UIButton new];
     [self.settingsButton setImage:[UIImage imageNamed:@"icon-settings"] forState:UIControlStateNormal];
     [self.settingsButton addTarget:self action:@selector(settingsButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    [self.buttonContainer addSubview:self.settingsButton];
+    [buttons addObject:self.settingsButton];
     
-    self.standbyButton = [UIButton newAutoLayoutView];
+    self.standbyButton = [UIButton new];
     [self.standbyButton setImage:[UIImage imageNamed:@"icon-power"] forState:UIControlStateNormal];
     [self.standbyButton addTarget:self action:@selector(standbyButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    [self.buttonContainer addSubview:self.standbyButton];
+    [buttons addObject:self.standbyButton];
     
-    self.helpButton = [UIButton newAutoLayoutView];
+    self.helpButton = [UIButton new];
     [self.helpButton setImage:[UIImage imageNamed:@"icon-help"] forState:UIControlStateNormal];
     [self.helpButton addTarget:self action:@selector(helpButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    [self.buttonContainer addSubview:self.helpButton];
+    [buttons addObject:self.helpButton];
     
     if ([self shouldDisplayUnlockButton]) {
-        self.unlockButton = [UIButton newAutoLayoutView];
+        self.unlockButton = [UIButton new];
         [self.unlockButton setImage:[UIImage imageNamed:@"icon-unlock"] forState:UIControlStateNormal];
         [self.unlockButton addTarget:self action:@selector(unlockButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-        [self.buttonContainer addSubview:self.unlockButton];
+        [buttons addObject:self.unlockButton];
     }
+    
+    self.buttonContainer = [[UIStackView alloc] initWithArrangedSubviews:buttons];
+    self.buttonContainer.axis = UILayoutConstraintAxisHorizontal;
+    self.buttonContainer.distribution = UIStackViewDistributionEqualSpacing;
+    self.buttonContainer.alignment = UIStackViewAlignmentCenter;
+    [self.drawerBackground addSubview:self.buttonContainer];
 }
 
 - (void)updateConstraints
 {
     [super updateConstraints];
     
-    if (!self.didSetupConstraints) {
-        [self.drawerBackground autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(kTFControlDrawerTopOverlap, 0.0f, -kDrawerOverSlide, 0.0f)];
-        [self.buttonContainer autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0.0f, 0.0f, kDrawerOverSlide, 0.0f)];
-        
-        [self.toggleButtonBackground autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.toggleButton withOffset:-8.0f];
-        [self.toggleButtonBackground autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.toggleButton withOffset:-12.0f];
-        [self.toggleButtonBackground autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.toggleButton withOffset:12.0f];
-        [self.toggleButtonBackground autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:self.drawerBackground withOffset:kToggleButtonBackgroundCornerRadius];
-        
-        if ([self shouldDisplayUnlockButton]) {
-            [self.settingsButton autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-            [self.settingsButton autoConstrainAttribute:ALAttributeVertical toAttribute:ALAttributeVertical ofView:self.buttonContainer withMultiplier:0.25f];
-            
-            [self.standbyButton autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-            [self.standbyButton autoConstrainAttribute:ALAttributeVertical toAttribute:ALAttributeVertical ofView:self.buttonContainer withMultiplier:0.75f];
-            
-            [self.helpButton autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-            [self.helpButton autoConstrainAttribute:ALAttributeVertical toAttribute:ALAttributeVertical ofView:self.buttonContainer withMultiplier:1.25f];
-            
-            [self.unlockButton autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-            [self.unlockButton autoConstrainAttribute:ALAttributeVertical toAttribute:ALAttributeVertical ofView:self.buttonContainer withMultiplier:1.75f];
-        } else {
-            [self.settingsButton autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-            [self.settingsButton autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:kPaddingBetweenControlIcons];
-            
-            [self.standbyButton autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-            [self.standbyButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
-            
-            [self.helpButton autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-            [self.helpButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:kPaddingBetweenControlIcons];
-        }
-        
-        self.didSetupConstraints = YES;
+    if (!self.tallConstraints && self.isTallLayout) {
+        [self.wideConstraints autoRemoveConstraints];
+        self.wideConstraints = nil;
+        self.tallConstraints = [self setupTallConstraints];
     }
+    
+    if (!self.wideConstraints && !self.isTallLayout) {
+        [self.tallConstraints autoRemoveConstraints];
+        self.tallConstraints = nil;
+        self.wideConstraints = [self setupWideConstraints];
+    }
+}
+
+static const CGFloat k3ButtonsEdgePadding = 30.0;
+static const CGFloat k4ButtonsEdgePadding = 20.0;
+static const CGFloat kToggleButtonSideEdgePadding = 12.0;
+static const CGFloat kToggleButtonEndEdgePadding = 8.0;
+
+- (NSArray<NSLayoutConstraint *> *)setupWideConstraints
+{
+    CGFloat kButtonsEdgePadding = self.buttonContainer.arrangedSubviews.count >= 4 ? k4ButtonsEdgePadding : k3ButtonsEdgePadding;
+    NSArray<NSLayoutConstraint *> *constraints = [UIView autoCreateConstraintsWithoutInstalling:^{
+        [self.drawerBackground autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(kTFControlDrawerTopOverlap, 0.0, -kDrawerOverSlide, 0.0)];
+        [self.buttonContainer autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0.0, kButtonsEdgePadding, kDrawerOverSlide, kButtonsEdgePadding)];
+        
+        [self.toggleButton autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self];
+        [self.toggleButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
+        
+        [self.toggleButtonBackground autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.toggleButton withOffset:-kToggleButtonEndEdgePadding];
+        [self.toggleButtonBackground autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.toggleButton withOffset:-kToggleButtonSideEdgePadding];
+        [self.toggleButtonBackground autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.toggleButton withOffset:kToggleButtonSideEdgePadding];
+        [self.toggleButtonBackground autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:self.drawerBackground withOffset:kToggleButtonBackgroundCornerRadius];
+    }];
+    [constraints autoInstallConstraints];
+    return constraints;
+}
+
+- (NSArray<NSLayoutConstraint *> *)setupTallConstraints
+{
+    CGFloat kButtonsEdgePadding = self.buttonContainer.arrangedSubviews.count >= 4 ? k4ButtonsEdgePadding : k3ButtonsEdgePadding;
+    NSArray<NSLayoutConstraint *> *constraints = [UIView autoCreateConstraintsWithoutInstalling:^{
+        [self.drawerBackground autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0.0, kTFControlDrawerTopOverlap, 0.0, -kDrawerOverSlide)];
+        [self.buttonContainer autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(kButtonsEdgePadding, kDrawerOverSlide, kButtonsEdgePadding, 0.0)];
+        
+        [self.toggleButton autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self];
+        [self.toggleButton autoConstrainAttribute:ALAttributeHorizontal toAttribute:ALAttributeHorizontal ofView:self withMultiplier:0.5];
+        
+        [self.toggleButtonBackground autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self.toggleButton withOffset:-kToggleButtonSideEdgePadding];
+        [self.toggleButtonBackground autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.toggleButton withOffset:-kToggleButtonEndEdgePadding];
+        [self.toggleButtonBackground autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.toggleButton withOffset:kToggleButtonSideEdgePadding];
+        [self.toggleButtonBackground autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:self.drawerBackground withOffset:kToggleButtonBackgroundCornerRadius];
+    }];
+    [constraints autoInstallConstraints];
+    return constraints;
 }
 
 - (BOOL)shouldDisplayUnlockButton
@@ -149,29 +171,6 @@
 {
     _isUnlockButtonEnabled = isUnlockButtonEnabled;
     self.unlockButton.enabled = isUnlockButtonEnabled;
-    [self.unlockButton.layer removeAllAnimations];
-    [self startUnlockButtonAnimation];
-}
-
-- (void)startUnlockButtonAnimation
-{
-    if (self.isUnlockButtonEnabled == NO) {
-        self.unlockButton.transform = self.unlockButtonTransform;
-        return;
-    }
-    
-    // Push the new animation to the next run loop so that any previous removeAllAnimations call will actually take effect
-    double delayInSeconds = 0.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [UIView animateWithDuration:1.0
-                              delay:0.0
-                            options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionAllowUserInteraction
-                         animations:^{
-                             self.unlockButton.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.15, 1.15), self.unlockButtonTransform);
-                         }
-                         completion:nil];
-    });
 }
 
 // Override to make this view transparent to touches.
@@ -188,30 +187,15 @@
     return hitView;
 }
 
-- (void)rotateToHorizontal:(BOOL)isHorizontal
+- (void)layoutSubviews
 {
-    CGAffineTransform rotate = isHorizontal ? CGAffineTransformMakeRotation(-M_PI_2) : CGAffineTransformIdentity;
-    CGAffineTransform inverseRotate = isHorizontal ? CGAffineTransformMakeRotation(M_PI_2) : CGAffineTransformIdentity;
+    [super layoutSubviews];
     
-    self.transform = rotate;
-    self.settingsButton.transform = inverseRotate;
-    self.standbyButton.transform = inverseRotate;
-    self.helpButton.transform = inverseRotate;
-    
-    if ([self shouldDisplayUnlockButton]) {
-        self.unlockButtonTransform = inverseRotate;
-        self.unlockButton.transform = self.unlockButtonTransform;
-        [self.unlockButton.layer removeAllAnimations];
-        [self startUnlockButtonAnimation];
-    }
-    
-    CGFloat toggleButtonX = isHorizontal ? CGRectGetWidth(self.bounds) * kToggleButtonHorizontalOffsetPercentage : CGRectGetMidX(self.bounds);
-    self.toggleButton.center = CGPointMake(toggleButtonX, self.toggleButton.center.y);
-    if (isHorizontal) {
-        self.toggleButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-    } else {
-        self.toggleButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    }
+    self.isTallLayout = self.viewOrientation == ViewOrientationPortrait;
+    CGAffineTransform rotate = self.isTallLayout ? CGAffineTransformMakeRotation(-M_PI_2) : CGAffineTransformIdentity;
+    self.toggleButton.transform = rotate;
+    self.buttonContainer.axis = self.isTallLayout ? UILayoutConstraintAxisVertical : UILayoutConstraintAxisHorizontal;
+    [self setNeedsUpdateConstraints];
 }
 
 - (UIView *)overlayView

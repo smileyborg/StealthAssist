@@ -44,7 +44,4 @@
 
 - (id)initWithDelegate:(NSObject<TFControlDrawerDelegate> *)delegate;
 
-// Applies transforms and adjusts the toggle button position so that the view appears correct in horizontal orientations
-- (void)rotateToHorizontal:(BOOL)isHorizontal;
-
 @end
