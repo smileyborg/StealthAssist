@@ -6,11 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "icon-triangle.png",
+      "filename" : "icon-triangle@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icon-triangle@3x.png",
       "scale" : "3x"
     }
   ],
