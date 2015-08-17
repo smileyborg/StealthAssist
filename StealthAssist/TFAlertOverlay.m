@@ -70,7 +70,7 @@
         self.installedConstraints = [NSMutableArray new];
         
         if (self.displayActivityIndicator) {
-            [UIView autoSetPriority:UILayoutPriorityRequired - 1 forConstraints:^{
+            [NSLayoutConstraint autoSetPriority:UILayoutPriorityRequired - 1 forConstraints:^{
                 [self.installedConstraints addObjectsFromArray:[self.titleLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(25.0, 15.0, 0, 15.0) excludingEdge:ALEdgeBottom]];
                 
                 [self.installedConstraints addObject:[self.activityIndicator autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.titleLabel withOffset:15.0f]];
@@ -78,7 +78,7 @@
                 [self.installedConstraints addObject:[self.activityIndicator autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:25.0f]];
             }];
         } else {
-            [UIView autoSetPriority:UILayoutPriorityRequired - 1 forConstraints:^{
+            [NSLayoutConstraint autoSetPriority:UILayoutPriorityRequired - 1 forConstraints:^{
                 [self.installedConstraints addObjectsFromArray:[self.titleLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(15.0f, 15.0f, 15.0f, 15.0f)]];
             }];
         }

@@ -1,6 +1,6 @@
 #include "Lockbox.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/Lockbox" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Colours" "${PODS_ROOT}/Headers/Public/Lockbox" "${PODS_ROOT}/Headers/Public/Mixpanel" "${PODS_ROOT}/Headers/Public/PureLayout"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/Lockbox" "${PODS_ROOT}/Headers/Public"
 OTHER_LDFLAGS = ${LOCKBOX_OTHER_LDFLAGS}
 PODS_ROOT = ${SRCROOT}
 SKIP_INSTALL = YES

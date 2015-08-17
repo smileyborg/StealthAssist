@@ -127,7 +127,7 @@ static const CGFloat kToggleButtonEndEdgePadding = 8.0;
 - (NSArray<NSLayoutConstraint *> *)setupWideConstraints
 {
     CGFloat kButtonsEdgePadding = self.buttonContainer.arrangedSubviews.count >= 4 ? k4ButtonsEdgePadding : k3ButtonsEdgePadding;
-    NSArray<NSLayoutConstraint *> *constraints = [UIView autoCreateConstraintsWithoutInstalling:^{
+    NSArray<NSLayoutConstraint *> *constraints = [NSLayoutConstraint autoCreateAndInstallConstraints:^{
         [self.drawerBackground autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(kTFControlDrawerTopOverlap, 0.0, -kDrawerOverSlide, 0.0)];
         [self.buttonContainer autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0.0, kButtonsEdgePadding, kDrawerOverSlide, kButtonsEdgePadding)];
         
@@ -139,14 +139,13 @@ static const CGFloat kToggleButtonEndEdgePadding = 8.0;
         [self.toggleButtonBackground autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.toggleButton withOffset:kToggleButtonSideEdgePadding];
         [self.toggleButtonBackground autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:self.drawerBackground withOffset:kToggleButtonBackgroundCornerRadius];
     }];
-    [constraints autoInstallConstraints];
     return constraints;
 }
 
 - (NSArray<NSLayoutConstraint *> *)setupTallConstraints
 {
     CGFloat kButtonsEdgePadding = self.buttonContainer.arrangedSubviews.count >= 4 ? k4ButtonsEdgePadding : k3ButtonsEdgePadding;
-    NSArray<NSLayoutConstraint *> *constraints = [UIView autoCreateConstraintsWithoutInstalling:^{
+    NSArray<NSLayoutConstraint *> *constraints = [NSLayoutConstraint autoCreateAndInstallConstraints:^{
         [self.drawerBackground autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0.0, kTFControlDrawerTopOverlap, 0.0, -kDrawerOverSlide)];
         [self.buttonContainer autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(kButtonsEdgePadding, kDrawerOverSlide, kButtonsEdgePadding, 0.0)];
         
@@ -158,7 +157,6 @@ static const CGFloat kToggleButtonEndEdgePadding = 8.0;
         [self.toggleButtonBackground autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.toggleButton withOffset:kToggleButtonSideEdgePadding];
         [self.toggleButtonBackground autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:self.drawerBackground withOffset:kToggleButtonBackgroundCornerRadius];
     }];
-    [constraints autoInstallConstraints];
     return constraints;
 }
 
