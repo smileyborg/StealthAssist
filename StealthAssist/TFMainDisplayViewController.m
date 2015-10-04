@@ -95,6 +95,11 @@ typedef NS_ENUM(NSInteger, TFV1State) {
     return UIStatusBarStyleLightContent;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if (self.isShowingTutorial) {
@@ -600,6 +605,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
     CGFloat viewHeight = (orientation == self.view.viewOrientation) ? CGRectGetHeight(self.view.bounds) : CGRectGetWidth(self.view.bounds);
     if (orientation == ViewOrientationPortrait) {
         // Portrait
+        self.controlDrawer.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         if ((self.controlDrawer.isDrawerToggling && self.controlDrawer.isDrawerOpen == NO) ||
             (self.controlDrawer.isDrawerToggling == NO && self.controlDrawer.isDrawerOpen)) {
             // Drawer open position
@@ -616,6 +622,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
         }
     } else {
         // Landscape
+        self.controlDrawer.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         if ((self.controlDrawer.isDrawerToggling && self.controlDrawer.isDrawerOpen == NO) ||
             (self.controlDrawer.isDrawerToggling == NO && self.controlDrawer.isDrawerOpen)) {
             // Drawer open position
