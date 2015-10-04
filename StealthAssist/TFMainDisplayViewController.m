@@ -1407,6 +1407,9 @@ typedef NS_ENUM(NSInteger, TFV1State) {
     // than TFV1StateConnecting, and we don't want to update the status label since it will have already been updated elsewhere.
     if (self.v1State == TFV1StateConnecting) {
         self.v1State = TFV1StateDisconnected;
+        if (self.isBackgrounded) {
+            [self enterStandbyMode];
+        }
         self.connectionStatusLabel.text = @"V1connection LE Bluetooth Module Not Found";
         if (self.isBackgrounded && [TFPreferences sharedInstance].displayBackgroundNotifications) {
             UILocalNotification *notification = [[UILocalNotification alloc] init];
