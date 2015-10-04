@@ -35,7 +35,7 @@
 #endif
 
 
-#define VERSION @"2.8.2"
+#define VERSION @"2.8.3"
 
 #if !defined(MIXPANEL_APP_EXTENSION)
 @interface Mixpanel () <UIAlertViewDelegate, MPSurveyNavigationControllerDelegate, MPNotificationViewControllerDelegate>
@@ -106,7 +106,14 @@ static Mixpanel *sharedInstance = nil;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[super alloc] initWithToken:apiToken launchOptions:launchOptions andFlushInterval:60];
+        
+#if defined(DEBUG)
+        const NSUInteger flushInterval = 1;
+#else
+        const NSUInteger flushInterval = 60;
+#endif
+        
+        sharedInstance = [[super alloc] initWithToken:apiToken launchOptions:launchOptions andFlushInterval:flushInterval];
     });
     return sharedInstance;
 }
@@ -537,6 +544,8 @@ static __unused NSString *MPURLEncode(NSString *s)
         self.eventsQueue = [NSMutableArray array];
         self.peopleQueue = [NSMutableArray array];
         self.timedEvents = [NSMutableDictionary dictionary];
+        self.shownSurveyCollections = [NSMutableSet set];
+        self.decideResponseCached = NO;
         [self archive];
     });
 }
@@ -1295,7 +1304,7 @@ static void MixpanelReachabilityCallback(SCNetworkReachabilityRef target, SCNetw
             NSMutableSet *parsedEventBindings = [NSMutableSet set];
             if (rawEventBindings && [rawEventBindings isKindOfClass:[NSArray class]]) {
                 for (id obj in rawEventBindings) {
-                    MPEventBinding *binder = [MPEventBinding bindngWithJSONObject:obj];
+                    MPEventBinding *binder = [MPEventBinding bindingWithJSONObject:obj];
                     [binder execute];
                     if (binder) {
                         [parsedEventBindings addObject:binder];
@@ -1501,6 +1510,10 @@ static void MixpanelReachabilityCallback(SCNetworkReachabilityRef target, SCNetw
                 [self.people append:@{@"$answers": answers[i]}];
             }
         }
+        
+        dispatch_async(_serialQueue, ^{
+            [self flushPeople];
+        });
     }
 }
 

@@ -1,10 +1,10 @@
 PODS:
-  - Colours (5.6.2)
+  - Colours (5.8.0)
   - Lockbox (2.1.0)
-  - Mixpanel (2.8.2):
-    - Mixpanel/Mixpanel (= 2.8.2)
-  - Mixpanel/Mixpanel (2.8.2)
-  - PureLayout (3.0.0)
+  - Mixpanel (2.8.3):
+    - Mixpanel/Mixpanel (= 2.8.3)
+  - Mixpanel/Mixpanel (2.8.3)
+  - PureLayout (3.0.1)
 
 DEPENDENCIES:
   - Colours
@@ -13,9 +13,9 @@ DEPENDENCIES:
   - PureLayout
 
 SPEC CHECKSUMS:
-  Colours: 0afd4c3429656880fd4cff350ca3bf0ab86ca348
+  Colours: c186cc76afa2ca86f5ca5e68f610f9be17b48337
   Lockbox: 16442da35d9d4286966936763be728a931d589c3
-  Mixpanel: f4d71ac2a306e7cda6ad03d4a2be249a0fd7a967
-  PureLayout: 270dfee2236f697ab1d5e2771c2e5c248495fa0d
+  Mixpanel: fd52e097ae0d27295d0595b2261c60b94d191fda
+  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
 
 COCOAPODS: 0.38.2
