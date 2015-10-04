@@ -217,6 +217,7 @@ typedef NS_ENUM(NSInteger, TFV1State) {
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     self.locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    self.locationManager.allowsBackgroundLocationUpdates = YES;
     
     self.bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     
