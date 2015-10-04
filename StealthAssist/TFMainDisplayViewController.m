@@ -728,8 +728,11 @@ typedef NS_ENUM(NSInteger, TFV1State) {
 {
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     if (status == kCLAuthorizationStatusNotDetermined) {
-        [self.locationManager requestAlwaysAuthorization];
-    } else if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        // We only need the WhenInUse authorization, in combination with background updates.
+        // This means the status bar will be blue ("StealthAssist is Using Your Location") when in the background.
+        [self.locationManager requestWhenInUseAuthorization];
+    } else if (status == kCLAuthorizationStatusAuthorizedWhenInUse ||
+               status == kCLAuthorizationStatusAuthorizedAlways) {
         [self.locationManager startUpdatingLocation];
     }
 }
@@ -1321,7 +1324,8 @@ typedef NS_ENUM(NSInteger, TFV1State) {
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
     // TODO: handle denied, restricted (also see above delegate method)
-    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse ||
+        status == kCLAuthorizationStatusAuthorizedAlways) {
         [self.locationManager startUpdatingLocation];
     }
 }
