@@ -2,7 +2,7 @@
 This repository contains the complete source code for **StealthAssist**, [available on the iOS App Store](https://itunes.apple.com/us/app/stealthassist-for-v1/id792567084?mt=8). StealthAssist wirelessly connects your iPhone to the [Valentine One](http://www.valentine1.com) radar detector using Bluetooth LE. For full functionality, you need a Valentine One with [ESP](http://www.valentine1.com/V1Info/ESP/) as well as the [V1connection LE](http://www.valentine1.com/v1info/v1connection/ios/) accessory.
 
 ## Background
-StealthAssist was designed and built by entirely by me (Tyler Fox) as a side project. The current version of the app (v1.3) is extremely stable, has never crashed in production, and has no known bugs. With that said, some parts of the code are in need of significant cleanup and refactoring -- `TFMainDisplayViewController` is a fantastic example of MVC *(Massive View Controller)*. I generally chose to prioritize new features and functionality over working on tech debt in my limited spare time, as revisiting existing proven code would incur even more testing overhead. (I test StealthAssist releases extensively using K and Ka band radar guns at home, as well as out in the field with real radar sources.) I started a significant rewrite of the app in Swift, but haven't had enough time to focus on that recently and there are many hours of development and testing left before that work is production-ready. I've decided to open source the current project in the meantime, and I've also made the Full App Unlock In-App Purchase available for free.
+StealthAssist was designed and built by entirely by me (Tyler Fox) as a side project. The latest version of the app is extremely stable. With that said, some parts of the code are in need of significant cleanup and refactoring -- `TFMainDisplayViewController` is a fantastic example of MVC *(Massive View Controller)*. I generally chose to prioritize new features and functionality over working on tech debt in my limited spare time, as revisiting existing proven code would incur even more testing overhead. (I test StealthAssist releases extensively using K and Ka band radar guns at home, as well as out in the field with real radar sources.) I started a significant rewrite of the app in Swift, but haven't had enough time to focus on that recently and there are many hours of development and testing left before that work is production-ready. I've decided to open source the current project in the meantime, and I've also made the Full App Unlock In-App Purchase available for free.
 
 ## Getting Started
 StealthAssist uses CocoaPods to manage most third-party dependencies. Therefore, you must open the `StealthAssist.xcworkspace` file in Xcode to view the complete project, and build & run the app.
@@ -10,9 +10,9 @@ StealthAssist uses CocoaPods to manage most third-party dependencies. Therefore,
 The CocoaPods used by this app have been checked in to the repository (in the `Pods/` directory), so you can simply open the above workspace in Xcode and immediately build and run. You do not need to run `pod install` after cloning the repository.
 
 ### Crash Reporting & Analytics
-StealthAssist uses [Crittercism](http://www.crittercism.com) to collect crash reports in the field. You need to provide your own API keys in the `TFAppDelegate.m` file for this to work.
+StealthAssist previously used [Crittercism](http://www.crittercism.com) to collect crash reports in the field. You need to integrate the SDK and provide your own API keys in the `TFAppDelegate.m` file for this to work.
 
-StealthAssist uses [Flurry](http://www.flurry.com) and [Mixpanel](http://mixpanel.com) to collect anonymous analytics. You need to provide your own API keys in the `TFAnalytics.m` file for these to work.
+StealthAssist previously used [Flurry](http://www.flurry.com) and [Mixpanel](http://mixpanel.com) to collect anonymous analytics. You need to integrate the SDKs and provide your own API keys in the `TFAnalytics.m` file for these to work.
 
 ## App Store Description
 ### Features

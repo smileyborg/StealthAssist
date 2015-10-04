@@ -33,9 +33,6 @@
 		A736CD08187A1F2900F9746C /* TFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CD07187A1F2900F9746C /* TFTableViewController.m */; };
 		A736CD0C187A213D00F9746C /* TFFAQEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CD0B187A213D00F9746C /* TFFAQEntry.m */; };
 		A736CD10187A259200F9746C /* TFFAQCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A736CD0F187A259200F9746C /* TFFAQCell.m */; };
-		A7382A2E1B54904C005B5D31 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = A7382A281B54904C005B5D31 /* dsym_upload.sh */; };
-		A7382A2F1B54904C005B5D31 /* libCrittercism_v5_2_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7382A291B54904C005B5D31 /* libCrittercism_v5_2_0.a */; };
-		A7382A301B54904C005B5D31 /* libFlurry_6.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7382A2D1B54904C005B5D31 /* libFlurry_6.5.0.a */; };
 		A740AB171B644E7800D5D1B1 /* UIView+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = A740AB161B644E7800D5D1B1 /* UIView+Orientation.m */; };
 		A74D993418B03AC000E129DA /* TFAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = A74D993318B03AC000E129DA /* TFAnalytics.m */; };
 		A74D993618B140FC00E129DA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A74D993518B140FC00E129DA /* StoreKit.framework */; };
@@ -108,15 +105,6 @@
 		A736CD0B187A213D00F9746C /* TFFAQEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFAQEntry.m; sourceTree = "<group>"; };
 		A736CD0E187A259200F9746C /* TFFAQCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFAQCell.h; sourceTree = "<group>"; };
 		A736CD0F187A259200F9746C /* TFFAQCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFAQCell.m; sourceTree = "<group>"; };
-		A7382A241B54904C005B5D31 /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
-		A7382A251B54904C005B5D31 /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
-		A7382A261B54904C005B5D31 /* CrittercismConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismConfig.h; sourceTree = "<group>"; };
-		A7382A271B54904C005B5D31 /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
-		A7382A281B54904C005B5D31 /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
-		A7382A291B54904C005B5D31 /* libCrittercism_v5_2_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v5_2_0.a; sourceTree = "<group>"; };
-		A7382A2B1B54904C005B5D31 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		A7382A2C1B54904C005B5D31 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
-		A7382A2D1B54904C005B5D31 /* libFlurry_6.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.5.0.a; sourceTree = "<group>"; };
 		A740AB151B644E7800D5D1B1 /* UIView+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Orientation.h"; sourceTree = "<group>"; };
 		A740AB161B644E7800D5D1B1 /* UIView+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Orientation.m"; sourceTree = "<group>"; };
 		A74D993218B03AC000E129DA /* TFAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFAnalytics.h; sourceTree = "<group>"; };
@@ -176,14 +164,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7382A2F1B54904C005B5D31 /* libCrittercism_v5_2_0.a in Frameworks */,
 				A7C15D731B643C220080DC57 /* libESPLibrary_2_1.a in Frameworks */,
 				A72B291E196861C50061D5B3 /* AudioToolbox.framework in Frameworks */,
 				A74D993B18B1539900E129DA /* Security.framework in Frameworks */,
 				A74D993618B140FC00E129DA /* StoreKit.framework in Frameworks */,
 				A736CCED1877A2E000F9746C /* SystemConfiguration.framework in Frameworks */,
 				A729366B18596CA80028ECDB /* CoreGraphics.framework in Frameworks */,
-				A7382A301B54904C005B5D31 /* libFlurry_6.5.0.a in Frameworks */,
 				A729366D18596CA80028ECDB /* UIKit.framework in Frameworks */,
 				A729366918596CA80028ECDB /* Foundation.framework in Frameworks */,
 				071D4717686C06D331699D05 /* Pods.framework in Frameworks */,
@@ -304,9 +290,7 @@
 		A729369D185975B60028ECDB /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
-				A7382A231B54904C005B5D31 /* CrittercismSDK */,
 				A7382A311B54909F005B5D31 /* ESPLibrary */,
-				A7382A2A1B54904C005B5D31 /* Flurry */,
 				A736CCE41874C38200F9746C /* WSCoachMarksView */,
 			);
 			name = "Third Party";
@@ -361,29 +345,6 @@
 				A736CD0F187A259200F9746C /* TFFAQCell.m */,
 			);
 			name = "Table View Cells";
-			sourceTree = "<group>";
-		};
-		A7382A231B54904C005B5D31 /* CrittercismSDK */ = {
-			isa = PBXGroup;
-			children = (
-				A7382A241B54904C005B5D31 /* CRFilter.h */,
-				A7382A251B54904C005B5D31 /* Crittercism.h */,
-				A7382A261B54904C005B5D31 /* CrittercismConfig.h */,
-				A7382A271B54904C005B5D31 /* CrittercismDelegate.h */,
-				A7382A281B54904C005B5D31 /* dsym_upload.sh */,
-				A7382A291B54904C005B5D31 /* libCrittercism_v5_2_0.a */,
-			);
-			path = CrittercismSDK;
-			sourceTree = "<group>";
-		};
-		A7382A2A1B54904C005B5D31 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				A7382A2B1B54904C005B5D31 /* Flurry.h */,
-				A7382A2C1B54904C005B5D31 /* FlurryWatch.h */,
-				A7382A2D1B54904C005B5D31 /* libFlurry_6.5.0.a */,
-			);
-			path = Flurry;
 			sourceTree = "<group>";
 		};
 		A7382A311B54909F005B5D31 /* ESPLibrary */ = {
@@ -602,7 +563,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7382A2E1B54904C005B5D31 /* dsym_upload.sh in Resources */,
 				A7D8030519663F7F00B4F903 /* bogeylock-k.aif in Resources */,
 				A729368118596CA80028ECDB /* Images.xcassets in Resources */,
 				A7D8030619663F7F00B4F903 /* bogeylock-ka.aif in Resources */,

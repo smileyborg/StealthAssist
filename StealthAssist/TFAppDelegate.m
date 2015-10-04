@@ -8,7 +8,7 @@
 
 #import "TFAppDelegate.h"
 #import "TFMainDisplayViewController.h"
-#import "Crittercism.h"
+//#import "Crittercism.h"
 
 static TFAppDelegate *_static_sharedInstance = nil;
 

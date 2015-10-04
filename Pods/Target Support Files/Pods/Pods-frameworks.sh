@@ -54,12 +54,10 @@ code_sign_if_enabled() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods/Colours.framework'
   install_framework 'Pods/Lockbox.framework'
-  install_framework 'Pods/Mixpanel.framework'
   install_framework 'Pods/PureLayout.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods/Colours.framework'
   install_framework 'Pods/Lockbox.framework'
-  install_framework 'Pods/Mixpanel.framework'
   install_framework 'Pods/PureLayout.framework'
 fi
