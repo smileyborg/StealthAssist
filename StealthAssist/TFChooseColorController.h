@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TFTableViewController.h"
 
-typedef void(^TFChooseColorBlock)(UIColor *chosenColor);
+typedef void(^TFChooseColorBlock)(UIColor *chosenColor, NSUInteger chosenColorIndex);
 
 
 @interface TFChooseColorController : TFTableViewController

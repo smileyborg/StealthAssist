@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TFTableViewController.h"
+#import "TFChooseColorController.h"
 
 @interface TFSettingsColorController : TFTableViewController
 
@@ -17,6 +18,6 @@
 
 // This will be executed with the chosen tint color once it has been selected.
 // This allows the presenting controller to store the selected color, to apply at a later time.
-@property (nonatomic, copy) void(^tintColorSelectionBlock)(UIColor *tintColor);
+@property (nonatomic, copy) TFChooseColorBlock tintColorSelectionBlock;
 
 @end

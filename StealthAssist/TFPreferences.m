@@ -19,12 +19,12 @@
 #define kDefaultShowPriorityAlertFrequency      NO
 #define kDefaultUnmuteForBandKa                 NO
 
-#define kDefaultAppTintColor                    self.appTintColors[0]
+#define kDefaultAppTintColorIndex               0
 #define kDefaultColorPerBand                    NO
-#define kDefaultBandLaserColor                  self.bandColors[0]
-#define kDefaultBandKaColor                     self.bandColors[2]
-#define kDefaultBandKColor                      self.bandColors[4]
-#define kDefaultBandXColor                      self.bandColors[6]
+#define kDefaultBandLaserColorIndex             0
+#define kDefaultBandKaColorIndex                2
+#define kDefaultBandKColorIndex                 4
+#define kDefaultBandXColorIndex                 6
 
 #define kShouldShowTutorialPreferencesKey               @"ShouldShowTutorialPreferencesKey"
 #define kMPHPreferencesKey                              @"MPHPreferencesKey"
@@ -37,12 +37,12 @@
 #define kShowPriorityAlertFrequencyPreferencesKey       @"ShowPriorityAlertFrequencyPreferencesKey"
 #define kUnmuteForBandKaPreferencesKey                  @"UnmuteForBandKaPreferencesKey"
 
-#define kAppTintColorPreferencesKey                     @"AppTintColorPreferencesKey"
+#define kAppTintColorIndexPreferencesKey                @"AppTintColorIndexPreferencesKey"
 #define kColorPerBandPreferencesKey                     @"ColorPerBandPreferencesKey"
-#define kBandLaserColorPreferencesKey                   @"BandLaserColorPreferencesKey"
-#define kBandKaColorPreferencesKey                      @"BandKaColorPreferencesKey"
-#define kBandKColorPreferencesKey                       @"BandKColorPreferencesKey"
-#define kBandXColorPreferencesKey                       @"BandXColorPreferencesKey"
+#define kBandLaserColorIndexPreferencesKey              @"BandLaserColorIndexPreferencesKey"
+#define kBandKaColorIndexPreferencesKey                 @"BandKaColorIndexPreferencesKey"
+#define kBandKColorIndexPreferencesKey                  @"BandKColorIndexPreferencesKey"
+#define kBandXColorIndexPreferencesKey                  @"BandXColorIndexPreferencesKey"
 
 @implementation TFPreferences
 
@@ -77,12 +77,12 @@
     self.unmuteForBandKa = kDefaultUnmuteForBandKa;
     
     // Colors
-    self.appTintColor = kDefaultAppTintColor;
+    self.appTintColorIndex = kDefaultAppTintColorIndex;
     self.colorPerBand = kDefaultColorPerBand;
-    self.bandLaserColor = kDefaultBandLaserColor;
-    self.bandKaColor = kDefaultBandKaColor;
-    self.bandKColor = kDefaultBandKColor;
-    self.bandXColor = kDefaultBandXColor;
+    self.bandLaserColorIndex = kDefaultBandLaserColorIndex;
+    self.bandKaColorIndex = kDefaultBandKaColorIndex;
+    self.bandKColorIndex = kDefaultBandKColorIndex;
+    self.bandXColorIndex = kDefaultBandXColorIndex;
 }
 
 #pragma mark Preferences
@@ -254,46 +254,51 @@
 
 #pragma mark Colors
 
-- (NSArray *)masterColors
+NSArray<UIColor *> *GetMasterColors(void)
 {
-    return @[
-             [UIColor redColor],
-             [UIColor grapefruitColor],
-             [UIColor orangeColor],
-             [UIColor yellowColor],
-             [UIColor yellowGreenColor],
-             [UIColor colorWithRed:0.0f green:0.9f blue:0.0f alpha:1.0f], // Green
-             [UIColor skyBlueColor],
-             [UIColor colorWithRed:0.2f green:0.2f blue:1.0f alpha:1.0f], // Blue
-             [UIColor violetColor],
-             [UIColor fuschiaColor]
-             ];
+    static NSArray<UIColor *> *_masterColors = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _masterColors = @[
+                          [UIColor redColor],
+                          [UIColor grapefruitColor],
+                          [UIColor orangeColor],
+                          [UIColor yellowColor],
+                          [UIColor yellowGreenColor],
+                          [UIColor colorWithRed:0.0f green:0.9f blue:0.0f alpha:1.0f], // Green
+                          [UIColor skyBlueColor],
+                          [UIColor colorWithRed:0.2f green:0.2f blue:1.0f alpha:1.0f], // Blue
+                          [UIColor violetColor],
+                          [UIColor fuschiaColor]
+                          ];
+    });
+    return _masterColors;
 }
 
-- (NSArray *)appTintColors
+- (NSArray<UIColor *> *)appTintColors
 {
-    return [self masterColors];
+    return GetMasterColors();
+}
+
+- (NSUInteger)appTintColorIndex
+{
+    id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kAppTintColorIndexPreferencesKey];
+    BOOL hasStoredPreference = storedPreference != nil;
+    if (hasStoredPreference == NO) {
+        [self setAppTintColorIndex:kDefaultAppTintColorIndex];
+    }
+    return hasStoredPreference ? [storedPreference unsignedIntegerValue] : kDefaultAppTintColorIndex;
+}
+
+- (void)setAppTintColorIndex:(NSUInteger)appTintColorIndex
+{
+    NSAssert(appTintColorIndex < self.appTintColors.count, @"App tint color index out of bounds!");
+    [[NSUserDefaults standardUserDefaults] setObject:@(appTintColorIndex) forKey:kAppTintColorIndexPreferencesKey];
 }
 
 - (UIColor *)appTintColor
 {
-    id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kAppTintColorPreferencesKey];
-    BOOL hasStoredPreference = storedPreference != nil;
-    if (hasStoredPreference == NO) {
-        [self setAppTintColor:kDefaultAppTintColor];
-    }
-    UIColor *color = hasStoredPreference ? [NSKeyedUnarchiver unarchiveObjectWithData:storedPreference] : kDefaultAppTintColor;
-    if ([self.appTintColors containsObject:color] == NO) {
-        // This occurs when the stored color is not one of the options (due to the source code for the appTintColors options array changing)
-        color = kDefaultAppTintColor;
-    }
-    return color;
-}
-
-- (void)setAppTintColor:(UIColor *)appTintColor
-{
-    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:appTintColor];
-    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:kAppTintColorPreferencesKey];
+    return self.appTintColors[self.appTintColorIndex];
 }
 
 - (BOOL)colorPerBand
@@ -312,89 +317,89 @@
 }
 
 // This must have at least 4 colors, since there are 4 bands.
-- (NSArray *)bandColors
+- (NSArray<UIColor *> *)bandColors
 {
-    return [self masterColors];
+    return GetMasterColors();
+}
+
+- (NSUInteger)bandLaserColorIndex
+{
+    id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kBandLaserColorIndexPreferencesKey];
+    BOOL hasStoredPreference = storedPreference != nil;
+    if (hasStoredPreference == NO) {
+        [self setBandLaserColorIndex:kDefaultBandLaserColorIndex];
+    }
+    return hasStoredPreference ? [storedPreference unsignedIntegerValue] : kDefaultBandLaserColorIndex;
+}
+
+- (void)setBandLaserColorIndex:(NSUInteger)bandLaserColorIndex
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@(bandLaserColorIndex) forKey:kBandLaserColorIndexPreferencesKey];
 }
 
 - (UIColor *)bandLaserColor
 {
-    id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kBandLaserColorPreferencesKey];
-    BOOL hasStoredPreference = storedPreference != nil;
-    if (hasStoredPreference == NO) {
-        [self setBandLaserColor:kDefaultBandLaserColor];
-    }
-    UIColor *color = hasStoredPreference ? [NSKeyedUnarchiver unarchiveObjectWithData:storedPreference] : kDefaultBandLaserColor;
-    if ([self.bandColors containsObject:color] == NO) {
-        color = kDefaultBandLaserColor;
-    }
-    return color;
+    return self.bandColors[self.bandLaserColorIndex];
 }
 
-- (void)setBandLaserColor:(UIColor *)bandLaserColor
+- (NSUInteger)bandKaColorIndex
 {
-    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:bandLaserColor];
-    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:kBandLaserColorPreferencesKey];
+    id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kBandKaColorIndexPreferencesKey];
+    BOOL hasStoredPreference = storedPreference != nil;
+    if (hasStoredPreference == NO) {
+        [self setBandKaColorIndex:kDefaultBandKaColorIndex];
+    }
+    return hasStoredPreference ? [storedPreference unsignedIntegerValue] : kDefaultBandKaColorIndex;
+}
+
+- (void)setBandKaColorIndex:(NSUInteger)bandKaColorIndex
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@(bandKaColorIndex) forKey:kBandKaColorIndexPreferencesKey];
 }
 
 - (UIColor *)bandKaColor
 {
-    id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kBandKaColorPreferencesKey];
-    BOOL hasStoredPreference = storedPreference != nil;
-    if (hasStoredPreference == NO) {
-        [self setBandKaColor:kDefaultBandKaColor];
-    }
-    UIColor *color = hasStoredPreference ? [NSKeyedUnarchiver unarchiveObjectWithData:storedPreference] : kDefaultBandKaColor;
-    if ([self.bandColors containsObject:color] == NO) {
-        color = kDefaultBandKaColor;
-    }
-    return color;
+    return self.bandColors[self.bandKaColorIndex];
 }
 
-- (void)setBandKaColor:(UIColor *)bandKaColor
+- (NSUInteger)bandKColorIndex
 {
-    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:bandKaColor];
-    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:kBandKaColorPreferencesKey];
+    id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kBandKColorIndexPreferencesKey];
+    BOOL hasStoredPreference = storedPreference != nil;
+    if (hasStoredPreference == NO) {
+        [self setBandKColorIndex:kDefaultBandKColorIndex];
+    }
+    return hasStoredPreference ? [storedPreference unsignedIntegerValue] : kDefaultBandKColorIndex;
+}
+
+- (void)setBandKColorIndex:(NSUInteger)bandKColorIndex
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@(bandKColorIndex) forKey:kBandKColorIndexPreferencesKey];
 }
 
 - (UIColor *)bandKColor
 {
-    id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kBandKColorPreferencesKey];
-    BOOL hasStoredPreference = storedPreference != nil;
-    if (hasStoredPreference == NO) {
-        [self setBandKColor:kDefaultBandKColor];
-    }
-    UIColor *color = hasStoredPreference ? [NSKeyedUnarchiver unarchiveObjectWithData:storedPreference] : kDefaultBandKColor;
-    if ([self.bandColors containsObject:color] == NO) {
-        color = kDefaultBandKColor;
-    }
-    return color;
+    return self.bandColors[self.bandKColorIndex];
 }
 
-- (void)setBandKColor:(UIColor *)bandKColor
+- (NSUInteger)bandXColorIndex
 {
-    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:bandKColor];
-    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:kBandKColorPreferencesKey];
+    id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kBandXColorIndexPreferencesKey];
+    BOOL hasStoredPreference = storedPreference != nil;
+    if (hasStoredPreference == NO) {
+        [self setBandXColorIndex:kDefaultBandXColorIndex];
+    }
+    return hasStoredPreference ? [storedPreference unsignedIntegerValue] : kDefaultBandXColorIndex;
+}
+
+- (void)setBandXColorIndex:(NSUInteger)bandXColorIndex
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@(bandXColorIndex) forKey:kBandXColorIndexPreferencesKey];
 }
 
 - (UIColor *)bandXColor
 {
-    id storedPreference = [[NSUserDefaults standardUserDefaults] objectForKey:kBandXColorPreferencesKey];
-    BOOL hasStoredPreference = storedPreference != nil;
-    if (hasStoredPreference == NO) {
-        [self setBandXColor:kDefaultBandXColor];
-    }
-    UIColor *color = hasStoredPreference ? [NSKeyedUnarchiver unarchiveObjectWithData:storedPreference] : kDefaultBandXColor;
-    if ([self.bandColors containsObject:color] == NO) {
-        color = kDefaultBandXColor;
-    }
-    return color;
-}
-
-- (void)setBandXColor:(UIColor *)bandXColor
-{
-    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:bandXColor];
-    [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:kBandXColorPreferencesKey];
+    return self.bandColors[self.bandXColorIndex];
 }
 
 @end

@@ -9,7 +9,6 @@
 #import "TFSettingsColorController.h"
 #import "TFPreferences.h"
 #import "TFColorSwatchView.h"
-#import "TFChooseColorController.h"
 
 #define kHorizontalCellPadding      15.0
 #define kColorSwatchSize            40.0
@@ -282,11 +281,10 @@ typedef NS_ENUM(NSInteger, TFSettingsColorBandSectionRow) {
     chooseColorController.colors = tintColors;
     UIColor *colorToSelect = self.chosenTintColor ? self.chosenTintColor : [TFPreferences sharedInstance].appTintColor;
     chooseColorController.selectedColorIndex = [tintColors indexOfObject:colorToSelect];
-    chooseColorController.block = ^(UIColor *chosenColor) {
-        NSAssert([tintColors containsObject:chosenColor], @"Unhandled band color.");
+    chooseColorController.block = ^(UIColor *chosenColor, NSUInteger chosenColorIndex) {
         self.chosenTintColor = chosenColor;
         if (self.tintColorSelectionBlock) {
-            self.tintColorSelectionBlock(chosenColor);
+            self.tintColorSelectionBlock(chosenColor, chosenColorIndex);
         }
         [self.tableView reloadData];
         [TFAnalytics track:@"Color Preference Changed: Tint Color" withData:@{@"Tint Color Index": [NSString stringWithFormat:@"%ld", (long)[tintColors indexOfObject:chosenColor]], @"Tint Color": [chosenColor description]}];
@@ -338,26 +336,25 @@ typedef NS_ENUM(NSInteger, TFSettingsColorBandSectionRow) {
     }
     chooseColorController.titlePrefix = bandString;
     chooseColorController.colors = bandColors;
-    chooseColorController.block = ^(UIColor *chosenColor) {
-        NSAssert([bandColors containsObject:chosenColor], @"Unhandled band color.");
+    chooseColorController.block = ^(UIColor *chosenColor, NSUInteger chosenColorIndex) {
         switch (bandRow) {
             case TFSettingsColorBandSectionRowLaser:
-                [TFPreferences sharedInstance].bandLaserColor = chosenColor;
+                [TFPreferences sharedInstance].bandLaserColorIndex = chosenColorIndex;
                 break;
             case TFSettingsColorBandSectionRowKa:
-                [TFPreferences sharedInstance].bandKaColor = chosenColor;
+                [TFPreferences sharedInstance].bandKaColorIndex = chosenColorIndex;
                 break;
             case TFSettingsColorBandSectionRowK:
-                [TFPreferences sharedInstance].bandKColor = chosenColor;
+                [TFPreferences sharedInstance].bandKColorIndex = chosenColorIndex;
                 break;
             case TFSettingsColorBandSectionRowX:
-                [TFPreferences sharedInstance].bandXColor = chosenColor;
+                [TFPreferences sharedInstance].bandXColorIndex = chosenColorIndex;
                 break;
             default:
                 break;
         }
         [self.tableView reloadData];
-        [TFAnalytics track:@"Color Preference Changed: Band Color" withData:@{@"Band": bandString, @"Band Color Index": [NSString stringWithFormat:@"%ld", (long)[bandColors indexOfObject:chosenColor]], @"Band Color": [chosenColor description]}];
+        [TFAnalytics track:@"Color Preference Changed: Band Color" withData:@{@"Band": bandString, @"Band Color Index": [NSString stringWithFormat:@"%ld", (long)chosenColorIndex], @"Band Color": [chosenColor description]}];
     };
     [self.navigationController pushViewController:chooseColorController animated:YES];
     

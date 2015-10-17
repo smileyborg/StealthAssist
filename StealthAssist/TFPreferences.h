@@ -27,14 +27,19 @@
 @property (nonatomic) BOOL showPriorityAlertFrequency;
 @property (nonatomic) BOOL unmuteForBandKa;
 
-@property (nonatomic, readonly) NSArray *appTintColors;
-@property (nonatomic) UIColor *appTintColor;
+@property (nonatomic, readonly) NSArray<UIColor *> *appTintColors;
+@property (nonatomic) NSUInteger appTintColorIndex;
+@property (nonatomic, readonly) UIColor *appTintColor;
 @property (nonatomic) BOOL colorPerBand;
-@property (nonatomic, readonly) NSArray *bandColors;
-@property (nonatomic) UIColor *bandLaserColor;
-@property (nonatomic) UIColor *bandKaColor;
-@property (nonatomic) UIColor *bandKColor;
-@property (nonatomic) UIColor *bandXColor;
+@property (nonatomic, readonly) NSArray<UIColor *> *bandColors;
+@property (nonatomic) NSUInteger bandLaserColorIndex;
+@property (nonatomic, readonly) UIColor *bandLaserColor;
+@property (nonatomic) NSUInteger bandKaColorIndex;
+@property (nonatomic, readonly) UIColor *bandKaColor;
+@property (nonatomic) NSUInteger bandKColorIndex;
+@property (nonatomic, readonly) UIColor *bandKColor;
+@property (nonatomic) NSUInteger bandXColorIndex;
+@property (nonatomic, readonly) UIColor *bandXColor;
 
 - (void)restoreDefaults;
 

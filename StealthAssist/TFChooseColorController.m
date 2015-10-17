@@ -31,6 +31,15 @@
     self.tableView.separatorColor = [UIColor clearColor];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.selectedColorIndex != NSNotFound && self.selectedColorIndex < [self.colors count]) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectedColorIndex inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -81,7 +90,7 @@
     self.selectedColorIndex = indexPath.row;
     [self.tableView reloadData];
     if (self.block) {
-        self.block(self.colors[self.selectedColorIndex]);
+        self.block(self.colors[self.selectedColorIndex], self.selectedColorIndex);
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

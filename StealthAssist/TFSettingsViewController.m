@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, TFSettingsRow) {
 // Stores the chosen tint color before changes are applied. (If this preference is set upon selection,
 // parts of the UI will take on the new color, and parts won't!)
 @property (nonatomic, strong) UIColor *chosenTintColor;
+@property (nonatomic, assign) NSUInteger chosenTintColorIndex;
 
 @property (nonatomic, assign) BOOL isShowingBackgroundRows;
 
@@ -65,7 +66,7 @@ typedef NS_ENUM(NSInteger, TFSettingsRow) {
 {
     // Apply any change to the app tint color
     if (self.chosenTintColor) {
-        [TFPreferences sharedInstance].appTintColor = self.chosenTintColor;
+        [TFPreferences sharedInstance].appTintColorIndex = self.chosenTintColorIndex;
         [TFAppDelegate sharedInstance].window.tintColor = kAppTintColorDarker;
         [self.tableView reloadData]; // updates table view with new tint colors
     }
@@ -448,8 +449,9 @@ typedef NS_ENUM(NSInteger, TFSettingsRow) {
 {
     TFSettingsColorController *colorController = [[TFSettingsColorController alloc] init];
     colorController.chosenTintColor = self.chosenTintColor;
-    colorController.tintColorSelectionBlock = ^(UIColor *tintColor) {
+    colorController.tintColorSelectionBlock = ^(UIColor *tintColor, NSUInteger tintColorIndex) {
         self.chosenTintColor = tintColor;
+        self.chosenTintColorIndex = tintColorIndex;
     };
     [self.navigationController pushViewController:colorController animated:YES];
     
